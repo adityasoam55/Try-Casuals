@@ -1,5 +1,5 @@
 import React from 'react';
-import video from './Assets/video.mp4';
+import video from '../public/video.mp4';
 
 function MainVideo() {
     return (
