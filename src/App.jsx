@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 function App() {
   return (
-    <div>
+    <div className='max-w-screen'>
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />}/>
