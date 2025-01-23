@@ -29,16 +29,16 @@ function NavBar() {
         </div>
 
         <div className="hidden md:flex flex-wrap justify-center text-center text-sm gap-8 px-2 hover:cursor-pointer">
-          <Link to="/" className="hover:underline underline-offset-8" href="">
+          <Link to="/" className="hover:underline underline-offset-8">
             Home
           </Link>
           <Link to="/allproducts/" className="hover:underline underline-offset-8">
             ALL PRODUCTS
           </Link>
-          <a className="hover:underline underline-offset-8" href="">
+          <a className="hover:underline underline-offset-8">
             BRANDS
           </a>
-          <a className="hover:underline underline-offset-8" href="">
+          <a className="hover:underline underline-offset-8">
             MY GIRLFRIENDS BACK
           </a>
         </div>
@@ -58,20 +58,38 @@ function NavBar() {
 
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-gray-400 bg-opacity-60 text-white z-50 w-full flex flex-col items-start py-4 px-4 gap-4 shadow-lg">
-          <Link to="/" className="hover:underline underline-offset-8" href="">
+          <Link
+            to="/"
+            className="hover:underline underline-offset-8"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Home
           </Link>
-          <Link to="/allproducts/" className="hover:underline underline-offset-8 text-lg" href="">
+          <Link
+            to="/allproducts/"
+            className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             ALL PRODUCTS
           </Link>
-          <a className="hover:underline underline-offset-8 text-lg" href="">
+          <a
+            href="#"
+            className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             BRANDS
           </a>
-          <a className="hover:underline underline-offset-8 text-lg" href="">
+          <a
+            href="#"
+            className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             MY GIRLFRIENDS BACK
           </a>
         </div>
       )}
+
+
     </div>
   );
 }
