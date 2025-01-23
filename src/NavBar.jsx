@@ -29,6 +29,9 @@ function NavBar() {
         </div>
 
         <div className="hidden md:flex flex-wrap justify-center text-center text-sm gap-8 px-2 hover:cursor-pointer">
+          <Link to="/" className="hover:underline underline-offset-8" href="">
+            Home
+          </Link>
           <Link to="/allproducts/" className="hover:underline underline-offset-8">
             ALL PRODUCTS
           </Link>
@@ -37,9 +40,6 @@ function NavBar() {
           </a>
           <a className="hover:underline underline-offset-8" href="">
             MY GIRLFRIENDS BACK
-          </a>
-          <a className="hover:underline underline-offset-8" href="">
-            STAFF EDIT
           </a>
         </div>
 
@@ -58,17 +58,17 @@ function NavBar() {
 
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-gray-400 bg-opacity-60 text-white z-50 w-full flex flex-col items-start py-4 px-4 gap-4 shadow-lg">
-          <a className="hover:underline underline-offset-8 text-lg" href="">
+          <Link to="/" className="hover:underline underline-offset-8" href="">
+            Home
+          </Link>
+          <Link to="/allproducts/" className="hover:underline underline-offset-8 text-lg" href="">
             ALL PRODUCTS
-          </a>
+          </Link>
           <a className="hover:underline underline-offset-8 text-lg" href="">
             BRANDS
           </a>
           <a className="hover:underline underline-offset-8 text-lg" href="">
             MY GIRLFRIENDS BACK
-          </a>
-          <a className="hover:underline underline-offset-8 text-lg" href="">
-            STAFF EDIT
           </a>
         </div>
       )}
