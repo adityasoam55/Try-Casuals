@@ -25,7 +25,7 @@ function NavBar() {
         </div>
 
         <div className="pl-2 text-3xl font-bold">
-          <a href="/">Hebe</a>
+          <a href="/">TryCasuals</a>
         </div>
 
         <div className="hidden md:flex flex-wrap justify-center text-center text-sm gap-8 px-2 hover:cursor-pointer">
