@@ -30,17 +30,17 @@ function NavBar() {
 
         <div className="hidden md:flex flex-wrap justify-center text-center text-sm gap-8 px-2 hover:cursor-pointer">
           <Link to="/" className="hover:underline underline-offset-8">
-            Home
+            HOME
           </Link>
           <Link to="/allproducts/" className="hover:underline underline-offset-8">
             ALL PRODUCTS
           </Link>
-          <a className="hover:underline underline-offset-8">
+          <Link className="hover:underline underline-offset-8">
             BRANDS
-          </a>
-          <a className="hover:underline underline-offset-8">
+          </Link>
+          <Link className="hover:underline underline-offset-8">
             MY GIRLFRIENDS BACK
-          </a>
+          </Link>
         </div>
 
         <div className="hidden md:flex gap-6 text-2xl pr-2 hover:cursor-pointer">
@@ -60,7 +60,7 @@ function NavBar() {
         <div className="absolute top-full left-0 right-0 bg-gray-400 bg-opacity-60 text-white z-50 w-full flex flex-col items-start py-4 px-4 gap-4 shadow-lg">
           <Link
             to="/"
-            className="hover:underline underline-offset-8"
+            className="hover:underline underline-offset-8 text-lg"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Home
@@ -88,8 +88,6 @@ function NavBar() {
           </a>
         </div>
       )}
-
-
     </div>
   );
 }
