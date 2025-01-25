@@ -7,3 +7,7 @@ export function getProductByCategory(){
 export function getAllProducts(){
     return axios.get("https://dummyjson.com/products").then(resp => resp.data.products);
 }
+
+export function getProductCategoryList(){
+    return axios.get("https://dummyjson.com/products/category-list").then(resp => resp.data);
+}

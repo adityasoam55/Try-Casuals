@@ -36,7 +36,7 @@ function NavBar() {
             ALL PRODUCTS
           </Link>
           <Link className="hover:underline underline-offset-8">
-            BRANDS
+            CATEGORIES
           </Link>
           <Link className="hover:underline underline-offset-8">
             MY GIRLFRIENDS BACK
@@ -72,20 +72,20 @@ function NavBar() {
           >
             ALL PRODUCTS
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/categorylist/"
             className="hover:underline underline-offset-8 text-lg"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            BRANDS
-          </a>
-          <a
+            CATEGORIES
+          </Link>
+          <Link
             href="#"
             className="hover:underline underline-offset-8 text-lg"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             MY GIRLFRIENDS BACK
-          </a>
+          </Link>
         </div>
       )}
     </div>
