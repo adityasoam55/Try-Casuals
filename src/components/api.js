@@ -15,3 +15,7 @@ export function getProductCategoryList(){
 export function getBeautyProducts(){
     return axios.get("https://dummyjson.com/products/category/beauty").then(resp => resp.data.products);
 }
+
+export function getGroceriesProducts(){
+    return axios.get("https://dummyjson.com/products/category/groceries").then(resp => resp.data.products);
+}

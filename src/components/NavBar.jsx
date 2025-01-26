@@ -35,7 +35,7 @@ function NavBar() {
           <Link to="/allproducts/" className="hover:underline underline-offset-8">
             ALL PRODUCTS
           </Link>
-          <Link className="hover:underline underline-offset-8">
+          <Link to="/categorylist/" className="hover:underline underline-offset-8">
             CATEGORIES
           </Link>
           <Link className="hover:underline underline-offset-8">
