@@ -9,5 +9,9 @@ export function getAllProducts(){
 }
 
 export function getProductCategoryList(){
-    return axios.get("https://dummyjson.com/products/category-list").then(resp => resp.data);
+    return axios.get("https://dummyjson.com/products/categories").then(resp => resp.data);
+}
+
+export function getBeautyProducts(){
+    return axios.get("https://dummyjson.com/products/category/beauty").then(resp => resp.data.products);
 }

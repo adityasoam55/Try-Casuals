@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getProductCategoryList } from './api';
+import { Link } from 'react-router-dom';
 
 function CategoryList() {
     const [categorylist, setCategorylist] = useState([]);
@@ -10,7 +11,6 @@ function CategoryList() {
         list.then(function (resp) {
             setCategorylist(resp);
         })
-
     }, [])
 
     return (
@@ -20,9 +20,11 @@ function CategoryList() {
                 {
                     categorylist.map(function (item) {
                         return (
-                            <div className='flex justify-center hover:underline underline-offset-8 cursor-pointer'>
-                                <p>{item}</p>
-                            </div>
+                            <Link to={"/category/" + item.name} >
+                                <div className='flex justify-center hover:underline underline-offset-8 cursor-pointer'>
+                                    <p>{item.name}</p>
+                                </div>
+                            </Link>
                         )
                     })
                 }

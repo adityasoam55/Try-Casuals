@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import AllProducts from './components/AllProducts';
 import CategoryList from './components/CategoryList';
+import BeautyProducts from './components/BeautyProducts';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<MainPage />}/>
         <Route path="/allproducts/" element={<AllProducts />}  />
         <Route path="/categorylist/" element={<CategoryList />}  />
+        <Route path="/category/beauty" element={<BeautyProducts />}  />
       </Routes>
       <Footer />
     </div>
