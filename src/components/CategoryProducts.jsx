@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from 'react';
+import Product from './Product';
+import { getProductByCategory } from './api'; // Fetch products based on category
+import { useParams } from 'react-router-dom';
+
+function CategoryProducts() {
+    const { category } = useParams(); // Get the dynamic category from URL
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getProductByCategory(category)
+            .then((response) => {
+                setProducts(response); // Update state with fetched products
+            })
+            .catch((error) => {
+                console.error("Error fetching products:", error);
+            })
+            .finally(() => {
+                setLoading(false); // Stop the loading spinner
+            });
+    }, [category]); // Refetch whenever the category changes
+
+    if (loading) {
+        return <div className="text-black">Loading...</div>;
+    }
+
+    return (
+        <div className="bg-white mx-auto max-w-2xl px-4 py-10 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <h1 className="text-2xl font-bold mb-6 capitalize">{category} Products</h1>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                {products.map((product) => (
+                    <Product key={product.id} {...product} />
+                ))}
+            </div>
+        </div>
+    );
+}
+
+export default CategoryProducts;

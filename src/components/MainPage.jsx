@@ -3,18 +3,18 @@ import ContentPage from './ContentPage';
 import AboutHebe from './AboutHebe';
 import BottomItemPage from './BottomItemPage';
 import NoticePage from './NoticePage';
-import ProductListScroll from './ProductListScroll';
 import MainVideo from './MainVideo';
 import BrandsLogo from './BrandsLogo';
 import AsideSecond from './AsideSecond';
 import AsideFirst from './AsideFirst';
+import MustHavePicks from './MustHavePicks';
 
 function MainPage() {
   return (
     <div className='flex flex-col box-border overflow-x-hidden'>
     <ContentPage />
     <AboutHebe />
-    <ProductListScroll />
+    <MustHavePicks />
     <MainVideo />
     <BrandsLogo />
     <AsideFirst />
