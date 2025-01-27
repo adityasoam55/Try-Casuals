@@ -18,8 +18,6 @@ function App() {
         <Route path="/allproducts/" element={<AllProducts />}  />
         <Route path="/categorylist/" element={<CategoryList />}  />
         <Route path="/category/:category" element={<CategoryProducts />} />
-        {/* <Route path="/category/beauty" element={<BeautyProducts />}  />
-        <Route path="/category/groceries" element={<GroceriesProducts />}  /> */}
       </Routes>
       <Footer />
     </div>
