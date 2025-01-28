@@ -40,7 +40,6 @@ function Footer() {
                     <a className='max-md:px-2.5 max-md:py-1.5' href="">FAQ</a>
                     <a className='max-md:px-2.5 max-md:py-1.5' href="">Shipping</a>
                     <a className='max-md:px-2.5 max-md:py-1.5' href="">Returns</a>
-                    <a className='max-md:px-2.5 max-md:py-1.5' href="">Terms of Use</a>
                     <a className='max-md:px-2.5 max-md:py-1.5' href="">Privacy Policy</a>
                 </div>
 
