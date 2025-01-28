@@ -6,7 +6,7 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 function CategoryProducts() {
     const { category } = useParams(); // Get the dynamic category from URL
-    console.log(category)
+    // console.log(category)
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 

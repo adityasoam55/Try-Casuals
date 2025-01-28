@@ -45,7 +45,7 @@ function Footer() {
                 </div>
 
                 <div className='max-md:mt-2.5 max-md:font-normal max-md:text-xs'>
-                © 2023 Hebe Designer Boutique
+                © 2023 TryCasuals
                 </div>
             </div>
         </div>
