@@ -44,9 +44,9 @@ function NavBar() {
         </div>
 
         <div className="hidden md:flex gap-6 text-2xl pr-2 hover:cursor-pointer">
-          <a href="" aria-label="User Profile">
+          <Link to="/login/" aria-label="User Profile">
             <IoPersonOutline />
-          </a>
+          </Link>
           <a href="" aria-label="Search">
             <TfiSearch />
           </a>
