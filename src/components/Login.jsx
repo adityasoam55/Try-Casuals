@@ -32,11 +32,6 @@ function Login() {
                             <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
                                 Password
                             </label>
-                            <div className="text-sm">
-                                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                    Forgot password?
-                                </a>
-                            </div>
                         </div>
                         <div className="mt-2">
                             <input
@@ -61,9 +56,9 @@ function Login() {
                 </form>
 
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
-                    Not a member?{' '}
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                        Start a 14 day free trial
+                    Don't have Account?{' '}
+                    <a href="#" className="font-semibold text-gray-900 hover:text-gray-700">
+                        SignUp here
                     </a>
                 </p>
             </div>
