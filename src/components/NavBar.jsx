@@ -47,9 +47,6 @@ function NavBar() {
           <Link to="/login/" aria-label="User Profile">
             <IoPersonOutline />
           </Link>
-          <a href="" aria-label="Search">
-            <TfiSearch />
-          </a>
           <a href="" aria-label="Shopping Bag">
             <BsHandbag />
           </a>

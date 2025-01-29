@@ -1,29 +1,58 @@
+import { useFormik } from "formik";
 import Input from "./Input";
 import React from "react";
+import * as Yup from 'yup';
 
 function Login() {
+
+    function callLoginAPI({ email, password }) {
+        console.log("calling login API", email, password)
+    }
+
+    const loginSchema = Yup.object().shape({
+        email: Yup.string().email().required(),
+        password: Yup.string().min(8).max(12).required()
+    })
+
+    const { handleBlur, handleChange, handleSubmit, errors, touched } = useFormik({
+        initialValues: {
+            email: "",
+            password: ""
+        },
+        onSubmit: callLoginAPI,
+        validationSchema: loginSchema,
+    })
+
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-8 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                <h2 className="mt-8 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
                     Sign in to your account
                 </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form action="#" method="POST" className="space-y-6">
-                    <Input 
-                    id="email"
-                    name="email"
-                    label="Email"
-                    type="email"
+                    <Input
+                        id="email"
+                        name="email"
+                        label="Email"
+                        type="email"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.email}
+                        touched={touched.email}
                     />
 
                     <Input
-                    id="password"
-                    name="password"
-                    label="Password"
-                    type="password"
+                        id="password"
+                        name="password"
+                        label="Password"
+                        type="password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={errors.password}
+                        touched={touched.password}
                     />
 
                     <div>
