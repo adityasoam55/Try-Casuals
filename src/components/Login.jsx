@@ -1,11 +1,11 @@
-import { useFormik } from "formik";
+import { Form, Formik, useFormik } from "formik";
 import Input from "./Input";
 import React from "react";
 import * as Yup from 'yup';
 
 function Login() {
 
-    function callLoginAPI({ email, password }) {
+    function callLoginAPI({email, password}) {
         console.log("calling login API", email, password)
     }
 
@@ -14,14 +14,10 @@ function Login() {
         password: Yup.string().min(8).max(12).required()
     })
 
-    const { handleBlur, handleChange, handleSubmit, errors, touched } = useFormik({
-        initialValues: {
-            email: "",
-            password: ""
-        },
-        onSubmit: callLoginAPI,
-        validationSchema: loginSchema,
-    })
+    const initialValues = {
+        email: "",
+        password: ""
+    }
 
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-8 lg:px-8">
@@ -32,42 +28,40 @@ function Login() {
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form action="#" method="POST" className="space-y-6">
-                    <Input
-                        id="email"
-                        name="email"
-                        label="Email"
-                        type="email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={errors.email}
-                        touched={touched.email}
-                    />
+                <Formik
+                    onSubmit={callLoginAPI}
+                    validationSchema={loginSchema}
+                    initialValues={initialValues}
+                >
+                    <Form className="space-y-6">
+                        <Input
+                            id="email"
+                            name="email"
+                            label="Email address"
+                            type="email"
+                        />
 
-                    <Input
-                        id="password"
-                        name="password"
-                        label="Password"
-                        type="password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={errors.password}
-                        touched={touched.password}
-                    />
+                        <Input
+                            id="password"
+                            name="password"
+                            label="Password"
+                            type="password"
+                        />
 
-                    <div>
-                        <button
-                            type="submit"
-                            className="flex w-full justify-center rounded-md bg-gray-400 px-3 py-1.5 text-sm/6 font-semibold text-black shadow-xs hover:bg-gray-300 focus-visible:outline-2 focus-visible:outline-offset-2"
-                        >
-                            Sign in
-                        </button>
-                    </div>
-                </form>
+                        <div>
+                            <button
+                                type="submit"
+                                className="flex w-full justify-center rounded-md bg-gray-400 px-3 py-1.5 text-sm/6 font-semibold text-black shadow-xs hover:bg-gray-300 focus-visible:outline-2 "
+                            >
+                                Sign in
+                            </button>
+                        </div>
+                    </Form>
+                </Formik>
 
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
                     Don't have Account?{' '}
-                    <a href="#" className="font-semibold text-gray-900 hover:text-gray-700">
+                    <a href="#" className="font-semibold text-gray-900 hover:text-gray-700 hover:underline hover:underline-offset-4">
                         SignUp here
                     </a>
                 </p>

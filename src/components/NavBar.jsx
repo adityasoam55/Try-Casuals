@@ -15,7 +15,7 @@ function NavBar() {
         WITH PURCHASES $250+.
       </span>
 
-      <div className="w-full bg-gray-400 text-white flex items-center justify-between py-7 px-6 relative">
+      <div className="w-full bg-gray-400 text-white flex items-center justify-between py-7 px-4 relative">
         <div className="md:hidden text-2xl hover:cursor-pointer">
           {isMobileMenuOpen ? (
             <AiOutlineClose onClick={() => setIsMobileMenuOpen(false)} />
@@ -43,7 +43,7 @@ function NavBar() {
           </Link>
         </div>
 
-        <div className="hidden md:flex gap-6 text-2xl pr-2 hover:cursor-pointer">
+        <div className="flex gap-4 text-2xl pr-2 hover:cursor-pointer">
           <Link to="/login/" aria-label="User Profile">
             <IoPersonOutline />
           </Link>
