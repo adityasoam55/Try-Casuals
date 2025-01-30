@@ -3,6 +3,7 @@ import Product from './Product';
 import { getProductByCategory } from './api'; 
 import { Link, useParams } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import Loading from './Loading';
 
 function CategoryProducts() {
     const { category } = useParams(); // Get the dynamic category from URL
@@ -23,7 +24,7 @@ function CategoryProducts() {
     }, [category]); 
 
     if (loading) {
-        return <div className="text-black">Loading...</div>;
+        return <Loading />;
     }
 
     return (

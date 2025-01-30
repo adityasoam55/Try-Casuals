@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { getProductCategoryList } from './api';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 function CategoryList() {
     const [categorylist, setCategorylist] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(function () {
         let list = getProductCategoryList();
 
         list.then(function (resp) {
             setCategorylist(resp);
+            setLoading(false);
         })
     }, [])
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <div className='w-full text-black py-10 px-4 text-center'>

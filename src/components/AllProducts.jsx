@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getAllProducts } from './api';
 import Product from './Product';
+import Loading from './Loading';
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -46,7 +47,7 @@ function AllProducts() {
 
 
   if (loading) {
-    return <div className='text-black'>Loading...</div>
+    return <Loading />
   }
 
   return (
