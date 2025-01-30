@@ -53,7 +53,7 @@ function AllProducts() {
   return (
     <div className="bg-white mx-auto max-w-2xl px-4 py-8 sm:px-6 lg:max-w-7xl lg:px-8">
 
-      <div className="flex justify-between md:justify-end md:gap-4 items-center mb-6">
+      <div className="flex gap-2 justify-between md:justify-end md:gap-4 items-center mb-6">
         <input
           type="text"
           placeholder="Search products..."
