@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { getAllProducts } from './api';
 import Product from './Product';
 import Loading from './Loading';
+import Input from './Input';
 
 function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -53,17 +54,16 @@ function AllProducts() {
   return (
     <div className="bg-white mx-auto max-w-2xl px-4 py-8 sm:px-6 lg:max-w-7xl lg:px-8">
 
-      <div className="flex gap-2 justify-between md:justify-end md:gap-4 items-center mb-6">
-        <input
+      <div className="flex gap-2 justify-between items-center md:justify-end md:gap-4 mb-6">
+        <Input
           type="text"
           placeholder="Search products..."
-          className="border border-gray-300 rounded-lg px-4 py-2 max-sm:w-1/2 outline-none"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
         />
 
         <select
-          className="border border-gray-300 bg-gray-200 outline-none rounded-lg px-4 py-2"
+          className="border border-gray-300 bg-gray-200 outline-none rounded-lg px-3 py-1.5"
           value={sort}
           onChange={(e) => setSort(e.target.value)}
         >

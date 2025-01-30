@@ -1,5 +1,5 @@
 import { Form, Formik, useFormik } from "formik";
-import Input from "./Input";
+import Input, { FormikInput } from "./Input";
 import React from "react";
 import * as Yup from 'yup';
 
@@ -34,14 +34,14 @@ function Login() {
                     initialValues={initialValues}
                 >
                     <Form className="space-y-6">
-                        <Input
+                        <FormikInput
                             id="email"
                             name="email"
                             label="Email address"
                             type="email"
                         />
 
-                        <Input
+                        <FormikInput
                             id="password"
                             name="password"
                             label="Password"
