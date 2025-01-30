@@ -6,7 +6,6 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 function CategoryProducts() {
     const { category } = useParams(); // Get the dynamic category from URL
-    // console.log(category)
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -30,7 +29,7 @@ function CategoryProducts() {
     return (
         <div className="bg-white mx-auto max-w-2xl px-4 py-6 lg:max-w-7xl lg:px-8">
             <div className='flex justify-between items-center'>
-            <h1 className="text-2xl font-bold mb-6 capitalize">{category} Products</h1>
+            <h1 className="text-2xl font-medium mb-6 capitalize">{category}</h1>
             <Link to="/categorylist/" ><AiOutlineArrowLeft className='text-2xl mb-3 bg-gray-200 px-1 rounded-sm'/></Link>
             </div>
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
