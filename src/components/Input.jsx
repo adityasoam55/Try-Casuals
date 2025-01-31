@@ -10,7 +10,7 @@ function Input({ id, name, label, error, touched, className, ...rest }) {
                     {label}
                 </label>
             </div>
-            <div className="mt-2">
+            <div>
                 <input
                     id={id}
                     name={name}
