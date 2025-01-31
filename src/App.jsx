@@ -8,6 +8,7 @@ import CategoryList from './components/CategoryList';
 import CategoryProducts from './components/CategoryProducts';
 import Login from './components/Login';
 import Signup from './components/Signup'
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login/" element={<Login />} />
         <Route path="/signup/" element={<Signup />} />
         <Route path="/allproducts/" element={<AllProducts />}  />
+        <Route path="/productdetails/:id" element={<ProductDetails />}  />
         <Route path="/categorylist/" element={<CategoryList />}  />
         <Route path="/category/:category" element={<CategoryProducts />} />
       </Routes>

@@ -7,6 +7,9 @@ export function getProductWomensDresses() {
 export function getAllProducts() {
     return axios.get("https://dummyjson.com/products").then(resp => resp.data.products);
 }
+export function getProductDetails(id) {
+    return axios.get(`https://dummyjson.com/product/${id}`).then(resp => resp.data);
+}
 
 export function getProductCategoryList() {
     return axios.get("https://dummyjson.com/products/categories").then(resp => resp.data);
