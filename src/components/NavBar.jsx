@@ -46,7 +46,7 @@ function NavBar({cartValue}) {
           <Link to="/login/" aria-label="User Profile">
             <IoPersonOutline />
           </Link>
-          <Link href="" aria-label="Shopping Bag">
+          <Link to="/cartpage/" aria-label="Shopping Bag">
             <div className='relative flex justify-center'>
               <BsHandbag />
               <span className='absolute top-2.5 text-sm font-medium'>{cartValue}</span>

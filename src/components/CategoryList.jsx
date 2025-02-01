@@ -28,7 +28,7 @@ function CategoryList() {
                     categorylist.map(function (item) {
                         return (
                             <Link to={"/category/" + item.name} >
-                                <div id={item.name} className='flex justify-center hover:underline underline-offset-8 cursor-pointer'>
+                                <div key={item.name} className='flex justify-center hover:underline underline-offset-8 cursor-pointer'>
                                     <p>{item.name}</p>
                                 </div>
                             </Link>

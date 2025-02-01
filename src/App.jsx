@@ -9,13 +9,12 @@ import CategoryProducts from './components/CategoryProducts';
 import Login from './components/Login';
 import Signup from './components/Signup'
 import ProductDetails from './components/ProductDetails';
+import CartPage from './components/CartPage';
 
 function App() {
   const [cart, setCart] = useState({})
-  console.log(cart);
 
   function handleCart(value, id) {
-    console.log(`added ${value} of ${id} to cart`);
     setCart({ ...cart, [id]: value })
   }
 
@@ -33,6 +32,7 @@ function App() {
         <Route path="/productdetails/:id" element={<ProductDetails handleCart={handleCart} />} />
         <Route path="/categorylist/" element={<CategoryList />} />
         <Route path="/category/:category" element={<CategoryProducts />} />
+        <Route path="/cartpage/" element={<CartPage cart={cart} />} />
       </Routes>
       <Footer />
     </div>
