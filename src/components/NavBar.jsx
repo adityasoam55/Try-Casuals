@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { BsHandbag } from 'react-icons/bs';
 import { IoPersonOutline } from 'react-icons/io5';
-import { TfiSearch } from 'react-icons/tfi';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
-function NavBar() {
+function NavBar({cartValue}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="box-border relative w-full">
       <span className="text-neutral-300 text-xs text-center font-thin p-2 flex flex-wrap justify-center max-md:px-5">
-        $6 EXPRESS COURIER. FREE SHIPPING FOR ORDERS $200+. GIFTED HEBE TOTE BAG
+        $6 EXPRESS COURIER. FREE SHIPPING FOR ORDERS $200+. GIFTED TryCasuals TOTE BAG
         WITH PURCHASES $250+.
       </span>
 
@@ -43,13 +42,16 @@ function NavBar() {
           </Link>
         </div>
 
-        <div className="flex gap-4 text-2xl pr-2 hover:cursor-pointer">
+        <div className="flex gap-4 text-3xl pr-2 hover:cursor-pointer">
           <Link to="/login/" aria-label="User Profile">
             <IoPersonOutline />
           </Link>
-          <a href="" aria-label="Shopping Bag">
-            <BsHandbag />
-          </a>
+          <Link href="" aria-label="Shopping Bag">
+            <div className='relative flex justify-center'>
+              <BsHandbag />
+              <span className='absolute top-2.5 text-sm font-medium'>{cartValue}</span>
+            </div>
+          </Link>
         </div>
       </div>
 

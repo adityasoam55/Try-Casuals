@@ -6,7 +6,7 @@ function BottomItemPage() {
     return (
         <div className='box-border'>
             <div className='text-2xl font-bold text-center'>
-                @hebeboutique #hebebebe
+                @TryCasuals
             </div>
 
             <div className='w-screen h-72 grid grid-cols-5 pt-10'>
