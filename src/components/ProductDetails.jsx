@@ -75,7 +75,7 @@ function ProductDetails({ handleAddCart }) {
         {/* Right Section - Product Details */}
         <div className="flex flex-col justify-center ">
           <h1 className="text-2xl font-bold text-gray-800">{product.title}</h1>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-4">
             <p className="text-xl text-red-500 font-semibold mt-2">
               ${product.price}
             </p>
