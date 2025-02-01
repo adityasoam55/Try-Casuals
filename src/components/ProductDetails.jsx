@@ -5,7 +5,7 @@ import Input from "./Input";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import Loading from "./Loading";
 
-function ProductDetails({ handleCart }) {
+function ProductDetails({ handleAddCart }) {
   const [product, setProduct] = useState({});
   const [value, setValue] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ function ProductDetails({ handleCart }) {
   }, [])
 
   function handleAddToCart() {
-    handleCart(value, id)
+    handleAddCart(value, id)
   }
 
   function handlePlus() {
@@ -86,7 +86,7 @@ function ProductDetails({ handleCart }) {
               >
                 <AiOutlineMinusCircle />
               </button>
-              <Input value={value} onChange={handleInputChange} classname="w-10 text-center px-0 " />
+              <Input value={value} onChange={handleInputChange} classname="w-16 text-center px-0 " />
               <button
                 onClick={handlePlus}
                 className="text-2xl text-gray-600"

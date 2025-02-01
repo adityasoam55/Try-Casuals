@@ -12,27 +12,41 @@ import ProductDetails from './components/ProductDetails';
 import CartPage from './components/CartPage';
 
 function App() {
-  const [cart, setCart] = useState({})
+  const savedString = localStorage.getItem('cart') || '{}';
+  const savedCart = JSON.parse(savedString)
 
-  function handleCart(value, id) {
-    setCart({ ...cart, [id]: value })
+  const [cart, setCart] = useState(savedCart);
+  console.log(cart);
+
+  function handleAddCart(count, productId) {
+    let oldCount = cart[productId] || 0;
+
+    let newCart = { ...cart, [productId]: oldCount + count };
+    updateCart(newCart);
   }
+
+  function updateCart(newCart) {
+    setCart(newCart);
+
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  }
+
 
   const cartValue = Object.values(cart).reduce((acc, curr) => acc + curr, 0);
 
 
   return (
     <div className='max-w-screen'>
-      <NavBar cartValue={cartValue}/>
+      <NavBar cartValue={cartValue} />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login/" element={<Login />} />
         <Route path="/signup/" element={<Signup />} />
         <Route path="/allproducts/" element={<AllProducts />} />
-        <Route path="/productdetails/:id" element={<ProductDetails handleCart={handleCart} />} />
+        <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
         <Route path="/categorylist/" element={<CategoryList />} />
         <Route path="/category/:category" element={<CategoryProducts />} />
-        <Route path="/cartpage/" element={<CartPage cart={cart} />} />
+        <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} />} />
       </Routes>
       <Footer />
     </div>
