@@ -86,7 +86,7 @@ function ProductDetails({ handleAddCart }) {
               >
                 <AiOutlineMinusCircle />
               </button>
-              <Input value={value} onChange={handleInputChange} classname="w-16 text-center px-0 " />
+              <Input value={value} onChange={handleInputChange} classname="w-14 text-center px-0 " />
               <button
                 onClick={handlePlus}
                 className="text-2xl text-gray-600"

@@ -35,7 +35,7 @@ function CartPage({ cart, updateCart }) {
     }
 
     return (
-        <div className='max-w-6xl mx-auto p-6 h-96'>
+        <div className='max-w-6xl mx-auto p-6'>
             <p className='text-center mb-4 text-2xl font-medium'>My Cart</p>
             { cartList.length === 0 && <h1 className=' flex items-center justify-center text-3xl h-96'>Cart is Empty</h1>}
             {
@@ -47,7 +47,7 @@ function CartPage({ cart, updateCart }) {
                             </div>
                             <h3>{item.title}</h3>
                             <div className='flex justify-between gap-8 items-center'>
-                                <Input value={cart[item.id]} classname="w-16 text-center" />
+                                <Input value={cart[item.id]} classname="w-14 text-center" />
                                 <button
                                     productid={item.id}
                                     onClick={handleDelete}
