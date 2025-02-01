@@ -36,7 +36,7 @@ function App() {
 
 
   return (
-    <div className='max-w-screen'>
+    <div className='max-w-screen '>
       <NavBar cartValue={cartValue} />
       <Routes>
         <Route path="/" element={<MainPage />} />

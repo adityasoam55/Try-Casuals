@@ -11,7 +11,7 @@ import MustHavePicks from './MustHavePicks';
 
 function MainPage() {
   return (
-    <div className='flex flex-col box-border overflow-x-hidden'>
+    <div className='flex flex-col box-border overflow-x-hidden min-h-screen'>
     <ContentPage />
     <AboutHebe />
     <MustHavePicks />

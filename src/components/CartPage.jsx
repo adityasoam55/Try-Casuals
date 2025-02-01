@@ -35,14 +35,15 @@ function CartPage({ cart, updateCart }) {
     }
 
     return (
-        <div className='max-w-6xl mx-auto p-8 '>
+        <div className='max-w-6xl mx-auto p-6 h-96'>
+            <p className='text-center mb-4 text-2xl font-medium'>My Cart</p>
             { cartList.length === 0 && <h1 className=' flex items-center justify-center text-3xl h-96'>Cart is Empty</h1>}
             {
                 cartList.map((item) => {
                     return (
                         <div key={item.id} className='flex justify-between gap-8 items-center bg-gray-200 px-4 max-w-2xl mx-auto text-center'>
                             <div className='w-24 h-24'>
-                                <img src={item.thumbnail} alt={item.title} />
+                                <img src={item.thumbnail} alt={item.title} className='w-full h-full object-cover' />
                             </div>
                             <h3>{item.title}</h3>
                             <div className='flex justify-between gap-8 items-center'>
