@@ -32,6 +32,7 @@ function CartPage({ cart, updateCart }) {
         let newCart = { ...cart };
 
         delete newCart[productId];
+        setLocalCart(newCart);
         updateCart(newCart);
     }
 
@@ -72,9 +73,9 @@ function CartPage({ cart, updateCart }) {
                     )
                 })
             }
-            <button 
-            onClick={() => updateCart(localCart)}
-            className='border rounded-md bg-gray-400 hover:bg-gray-300 text-white mt-4 p-2'>Update Cart</button>
+            <button
+                onClick={() => updateCart(localCart)}
+                className='border rounded-md bg-gray-400 hover:bg-gray-300 text-white mt-4 p-2'>Update Cart</button>
         </div>
     )
 }

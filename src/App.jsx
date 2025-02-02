@@ -16,7 +16,7 @@ function App() {
   const savedCart = JSON.parse(savedString)
 
   const [cart, setCart] = useState(savedCart);
-  console.log(cart);
+  // console.log(cart);
 
   function handleAddCart(count, productId) {
     let oldCount = cart[productId] || 0;
