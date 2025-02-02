@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 function CartPage({ cart, updateCart }) {
     const [cartList, setCartList] = useState([]);
+    const [localCart, setLocalCart] = useState(cart);
     const [loading, setLoading] = useState(true);
 
     useEffect(function () {
@@ -22,11 +23,15 @@ function CartPage({ cart, updateCart }) {
 
     }, [cart])
 
-    function handleDelete(e) {
-        let product = e.target.getAttribute('productid')
+    function handleChange(value, productId) {
+        let newLocalCart = { ...localCart, [productId]: value };
+        setLocalCart(newLocalCart);
+    }
+
+    function handleDelete(productId) {
         let newCart = { ...cart };
 
-        delete newCart[product];
+        delete newCart[productId];
         updateCart(newCart);
     }
 
@@ -50,10 +55,15 @@ function CartPage({ cart, updateCart }) {
                             </Link>
                             <h3>{item.title}</h3>
                             <div className='flex justify-between gap-8 items-center'>
-                                <Input value={cart[item.id]} classname="w-14 text-center" />
+                                <Input
+                                    value={localCart[item.id]}
+                                    classname="w-14 text-center"
+                                    onChange={(e) => {
+                                        handleChange(+e.target.value, item.id)
+                                    }}
+                                />
                                 <button
-                                    productid={item.id}
-                                    onClick={handleDelete}
+                                    onClick={() => handleDelete(item.id)}
                                 >
                                     X
                                 </button>
@@ -62,6 +72,9 @@ function CartPage({ cart, updateCart }) {
                     )
                 })
             }
+            <button 
+            onClick={() => updateCart(localCart)}
+            className='border rounded-md bg-gray-400 hover:bg-gray-300 text-white mt-4 p-2'>Update Cart</button>
         </div>
     )
 }
