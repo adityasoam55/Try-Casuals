@@ -1,5 +1,4 @@
 import React from 'react';
-import ContentPage from './ContentPage';
 import AboutHebe from './AboutHebe';
 import BottomItemPage from './BottomItemPage';
 import NoticePage from './NoticePage';
@@ -8,11 +7,12 @@ import BrandsLogo from './BrandsLogo';
 import AsideSecond from './AsideSecond';
 import AsideFirst from './AsideFirst';
 import MustHavePicks from './MustHavePicks';
+import MainImage from './MainImage';
 
 function MainPage() {
   return (
     <div className='flex flex-col box-border overflow-x-hidden min-h-screen'>
-    <ContentPage />
+    <MainImage />
     <AboutHebe />
     <MustHavePicks />
     <MainVideo />
