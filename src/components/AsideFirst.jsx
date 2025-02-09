@@ -6,14 +6,14 @@ function AsideFirst() {
             <div className='w-1/2 max-md:w-full flex justify-center gap-4'>
                 <div className='w-20'>
                     <div className='w-full h-32 flex flex-col gap-5'>
-                        <img src="https://hebeboutique.com/cdn/shop/products/7C1E352C-8F37-4269-9F55-8A46D6695504_900x.jpeg.jpg?v=1591665729" />
+                        <img src="/images/perfume-1.webp" />
 
-                        <img src="https://hebeboutique.com/cdn/shop/products/A12BC00A-2D38-4CF5-8342-E8E6E4E84942_900x.jpeg.jpg?v=1591665729" />
+                        <img src="/images/perfume-2.webp" />
                     </div>
                 </div>
                 <div>
-                    <img src="https://hebeboutique.com/cdn/shop/products/7C1E352C-8F37-4269-9F55-8A46D6695504_900x.jpeg.jpg?v=1591665729" />
-                    <img src="https://hebeboutique.com/cdn/shop/products/A12BC00A-2D38-4CF5-8342-E8E6E4E84942_900x.jpeg.jpg?v=1591665729" />
+                    <img src="/images/perfume-1.webp" />
+                    <img src="/images/perfume-2.webp" />
                 </div>
             </div>
 
@@ -42,8 +42,8 @@ function AsideFirst() {
                         </div>
                     </div>
 
-                    <div className='w-full bg-stone-300 text-black text-center rounded-md mb-3'>
-                        <button className='w-full'>Add to Cart</button>
+                    <div className='w-full bg-stone-300 rounded-md mb-3'>
+                        <button className='w-full py-1 font-semibold text-black bg-stone-300 hover:bg-stone-200 rounded-md'>Add to Cart</button>
                     </div>
 
                     <div className='font-thin'>
