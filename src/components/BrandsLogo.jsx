@@ -2,46 +2,38 @@ import React from 'react';
 
 function BrandsLogo() {
     return (
-        <div className='w-screen py-28 max-md:px-7'>
-            <div className='w-full px-20 grid grid-cols-5 grid-rows-2 gap-3 max-md:flex max-md:flex-col max-md:gap-4 max-md:justify-center'>
+        <div className='w-screen pt-20 pb-10 max-md:pb-20 max-md:px-7'>
+            <div className='w-full px-20 flex flex-wrap justify-evenly items-center max-md:flex max-md:flex-col max-md:gap-4 max-md:justify-center'>
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/marle_55ab16d7-33ef-49b6-b69b-310b7265357f_360x.png?v=1628037743" />
+                    <img className='w-40 md:mb-10 mx-6' src="/images/brandlogo-1.png" />
                 </div>
 
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/Assembly_Label_360x.png?v=1627267743" />
+                    <img className='w-40 md:mb-10 mx-6' src="/images/brandlogo-2.png" />
                 </div>
 
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/Camilla_and_Marc_wordmark_360x.png?v=1628037827" />
+                    <img className='w-40 md:mb-10 mx-6' src="/images/brandlogo-3.png" />
                 </div>
 
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/remain_a61ef9cb-99e7-410d-a944-3a11ef1f10ec_360x.png?v=1628037863" />
+                    <img className='w-40 md:mb-10  mx-6' src="/images/brandlogo-4.png" />
                 </div>
 
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/StolenGirlfriendsClub2_8025ce91-0445-4139-814d-4252880cc414_360x.png?v=1628037894" />
+                    <img className='w-40 md:mb-10 mx-6' src="/images/brandlogo-5.png" />
                 </div>
 
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/commoners_374bbbd1-ad1c-46c8-a291-0bbd855ff672_360x.png?v=1628037958" />
+                    <img className='w-40 md:mb-10 mx-6' src="/images/brandlogo-6.png" />
                 </div>
 
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/twentysevennames_logo_170914_360x.png?v=1627007774" />
+                    <img className='w-40 md:mb-10 mx-6' src="/images/brandlogo-7.png" />
                 </div>
 
                 <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/CAITLIN_CRISP_LOCKUP_FINAL-01_600x_545be233-b6ec-4abe-9464-fb3f7caf1835_360x.png?v=1628038010" />
-                </div>
-
-                <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-6 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/IMG_3434_360x.png?v=1627007236" />
-                </div>
-
-                <div className='flex justify-center items-center max-md:p-5'>
-                    <img className='w-40 max-md:mb-0 mb-10 mx-6' src="https://hebeboutique.com/cdn/shop/files/Black_logo_400px_wide_400x_fcd3108c-bb78-4720-8da2-a7e4f6aa591f_360x.png?v=1628038061" />
+                    <img className='w-40 md:mb-10 mx-6' src="/images/brandlogo-8.png" />
                 </div>
             </div>
         </div>
