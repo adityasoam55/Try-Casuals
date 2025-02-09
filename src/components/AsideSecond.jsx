@@ -2,7 +2,7 @@ import React from 'react';
 
 function AsideSecond() {
     return (
-        <div className='box-border max-md:py-16 py-28 w-screen flex max-md:flex-wrap-reverse lg:flex-nowrap max-md:px-8 px-14'>
+        <div className='box-border py-20 w-screen flex max-md:flex-wrap-reverse lg:flex-nowrap max-md:px-8 px-14'>
             <div className='max-md:w-full w-2/4 flex flex-col justify-center items-center pl-5 pr-10'>
                 <span className='max-md:text-2xl text-5xl font-extrabold max-md:pt-7 mb-5'>Homegrown</span>
 
@@ -13,7 +13,7 @@ function AsideSecond() {
             </div>
 
             <div className='max-md:w-full w-2/4'>
-            <img className='w-full h-full' src="/images/homegrown.jpeg" />
+            <img className='w-full h-full max-h-screen object-contain' src="/images/homegrown.jpeg" />
             </div>
         </div>
     );

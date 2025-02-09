@@ -10,6 +10,9 @@ import Login from './components/Login';
 import Signup from './components/Signup'
 import ProductDetails from './components/ProductDetails';
 import CartPage from './components/CartPage';
+import ComingSoon from './components/ComingSoon';
+import BodyCare from './components/BodyCare';
+import NewArrivals from './components/NewArrivals';
 
 function App() {
   const savedString = localStorage.getItem('cart') || '{}';
@@ -47,6 +50,9 @@ function App() {
         <Route path="/categorylist/" element={<CategoryList />} />
         <Route path="/category/:category" element={<CategoryProducts />} />
         <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} />} />
+        <Route path="/comingsoon/" element={<ComingSoon />} />
+        <Route path="/bodycare/" element={<BodyCare />} />
+        <Route path="/newarrivals/" element={<NewArrivals />} />
       </Routes>
       <Footer />
     </div>
