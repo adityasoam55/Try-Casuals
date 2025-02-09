@@ -12,7 +12,7 @@ function CartRow({product, handleChange, handleRemove, localCart}) {
             >
                 <RxCross2 />
             </button>
-            
+
             <div className="w-16 h-16 self-start max-sm:self-center">
                 <img className="w-full h-full object-cover" src={product.thumbnail} />
             </div>

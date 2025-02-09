@@ -42,8 +42,9 @@ function CartList({ cart, updateCart }) {
 
 
     return (
-        <div className="bg-white max-w-3xl mx-auto ">
-            <div className="flex space-x-4 px-4 py-2 max-sm:hidden">
+        <div className="bg-gray-100 max-w-3xl mx-auto ">
+            {cartList.length === 0 && <div className="font-medium w-full text-center text-2xl">CartList is Empty...</div>}
+            <div className="bg-gray-400 flex space-x-4 px-4 py-2 max-sm:hidden">
                 <span className="pl-24 grow text-center">Products</span>
                 <span>Price</span>
                 <span className="w-14">Quantity</span>
@@ -58,14 +59,16 @@ function CartList({ cart, updateCart }) {
                     handleRemove={handleRemove}
                 />;
             })}
-            <div className="px-4 py-2 flex justify-end">
-                <button
-                    className="bg-gray-400 hover:bg-gray-300 text-white px-2 py-1 font-medium rounded-md"
-                   onClick={() => updateCart(localCart)}
-                >
-                    Update Cart
-                </button>
-            </div>
+            {cartList.length > 0 &&
+                <div className="px-4 py-2 flex justify-end">
+                    <button
+                        className="bg-gray-400 hover:bg-gray-300 text-white px-2 py-1 font-medium rounded-md"
+                        onClick={() => updateCart(localCart)}
+                    >
+                        Update Cart
+                    </button>
+                </div>
+            }
         </div>
     )
 }
