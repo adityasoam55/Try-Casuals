@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function NoticePage() {
     return (
         // <div className='md:pb-16 lg:pb-28'>
-        <div className='w-screen  grid  md:grid-cols-1 lg:grid-cols-3 max-md:gap-6 gap-9 max-md:px-5 px-10  max-md:pb-16 pb-28'>
+        <div className='w-screen  grid  md:grid-cols-3 max-md:gap-6 gap-9 max-md:px-5 px-10  max-md:pb-16 pb-28'>
             <Link to="/newarrivals/" >
                 <div className='h-96 relative'>
                     <img className='h-full w-full object-cover ' src="/images/newarrivals.jpg" />

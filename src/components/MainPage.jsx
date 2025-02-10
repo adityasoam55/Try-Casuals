@@ -20,7 +20,7 @@ function MainPage() {
     <AsideFirst />
     <AsideSecond />
     <NoticePage />
-    <BottomItemPage />
+    {/* <BottomItemPage /> */}
   </div>
   )
 }
