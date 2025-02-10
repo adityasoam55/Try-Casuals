@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AboutHebe() {
+function AboutSection() {
     return (
         <div className='box-border max-md:py-16 py-28 max-md:px-2 px-10'>
             <div className="bg-white italic max-md:text-xl text-2xl font-thin text-center w-3/4 m-auto">
@@ -10,4 +10,4 @@ function AboutHebe() {
     );
 }
 
-export default AboutHebe;
+export default AboutSection;

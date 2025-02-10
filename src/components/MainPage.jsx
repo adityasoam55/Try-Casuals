@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutHebe from './AboutHebe';
+import AboutHebe from './AboutSection';
 import BottomItemPage from './BottomItemPage';
 import NoticePage from './NoticePage';
 import MainVideo from './MainVideo';
