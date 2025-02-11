@@ -1,13 +1,19 @@
 import { Form, Formik, useFormik } from "formik";
-import Input, { FormikInput } from "./Input";
+import { FormikInput } from "./Input";
 import React from "react";
 import * as Yup from 'yup';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { loginUser } from "./api";
 
-function Login() {
+function Login({ setUser, user }) {
 
-    function callLoginAPI({email, password}) {
-        console.log("calling login API", email, password)
+    function callLoginAPI(values) {
+        loginUser(values).then((resp) => {
+            const { user, token } = resp.data;
+            localStorage.setItem('userToken', token);
+            setUser(user);
+            // console.log(user)
+        })
     }
 
     const loginSchema = Yup.object().shape({
@@ -18,6 +24,10 @@ function Login() {
     const initialValues = {
         email: "",
         password: ""
+    }
+
+    if (user) {
+        return <Navigate to="/" />
     }
 
     return (

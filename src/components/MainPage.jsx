@@ -8,20 +8,26 @@ import AsideSecond from './AsideSecond';
 import AsideFirst from './AsideFirst';
 import MustHavePicks from './MustHavePicks';
 import MainImage from './MainImage';
+import { Navigate } from 'react-router-dom';
 
-function MainPage() {
+function MainPage({ user }) {
+
+  if (!user) {
+    return <Navigate to="/login" />
+  }
+
   return (
     <div className='flex flex-col box-border overflow-x-hidden min-h-screen'>
-    <MainImage />
-    <AboutHebe />
-    <MustHavePicks />
-    <MainVideo />
-    <BrandsLogo />
-    <AsideFirst />
-    <AsideSecond />
-    <NoticePage />
-    {/* <BottomItemPage /> */}
-  </div>
+      <MainImage />
+      <AboutHebe />
+      <MustHavePicks />
+      <MainVideo />
+      <BrandsLogo />
+      <AsideFirst />
+      <AsideSecond />
+      <NoticePage />
+      {/* <BottomItemPage /> */}
+    </div>
   )
 }
 

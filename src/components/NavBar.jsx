@@ -7,6 +7,11 @@ import { Link } from 'react-router-dom';
 function NavBar({cartValue}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  function handleLogout(){
+    setIsMobileMenuOpen(false);
+    localStorage.removeItem('userToken');
+  }
+
   return (
     <div className="box-border relative w-full">
       <span className="text-neutral-300 text-xs text-center font-thin p-2 flex flex-wrap justify-center max-md:px-5">
@@ -78,13 +83,12 @@ function NavBar({cartValue}) {
           >
             CATEGORIES
           </Link>
-          {/* <Link
-            href="#"
+          <button
             className="hover:underline underline-offset-8 text-lg"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={handleLogout}
           >
-            MY GIRLFRIENDS BAG
-          </Link> */}
+           Logout
+          </button>
         </div>
       )}
     </div>

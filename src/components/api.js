@@ -26,3 +26,10 @@ export function getProductByCategory(category) {
             throw error; // Re-throw the error for further handling if needed
         });
 }
+
+export function loginUser(values){
+  return  axios.post("https://myeasykart.codeyogi.io/login", {
+        email: values.email,
+        password: values.password
+    })
+}

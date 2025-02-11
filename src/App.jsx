@@ -18,6 +18,7 @@ function App() {
   const savedString = localStorage.getItem('cart') || '{}';
   const savedCart = JSON.parse(savedString)
 
+  const [user, setUser] = useState();
   const [cart, setCart] = useState(savedCart);
   // console.log(cart);
 
@@ -42,8 +43,8 @@ function App() {
     <div className='max-w-screen '>
       <NavBar cartValue={cartValue} />
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login/" element={<Login />} />
+        <Route path="/" element={<MainPage user={user} />} />
+        <Route path="/login/" element={<Login setUser={setUser} user={user}/>} />
         <Route path="/signup/" element={<Signup />} />
         <Route path="/allproducts/" element={<AllProducts />} />
         <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
