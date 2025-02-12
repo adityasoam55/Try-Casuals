@@ -75,7 +75,7 @@ function App() {
 
   return (
     <div className="max-w-screen">
-      <NavBar cartValue={cartValue} handleLogout={handleLogout} />
+      <NavBar cartValue={cartValue} handleLogout={handleLogout} user={user} />
       <Routes>
         <Route path="/" element={<MainPage user={user} setUser={setUser} />} />
         <Route path="/login/" element={<Login setUser={setUser} user={user} />} />
