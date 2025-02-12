@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'; // Import useNavigate
 import MainPage from './components/MainPage';
 import NavBar from './components/NavBar';
@@ -16,7 +16,10 @@ import NewArrivals from './components/NewArrivals';
 import axios from 'axios';
 import Loading from './components/Loading';
 
+
+export const UserContext = createContext();
 function App() {
+
   const navigate = useNavigate(); // Add navigate hook
   const savedString = localStorage.getItem('cart') || '{}';
   const savedCart = JSON.parse(savedString);
@@ -75,21 +78,23 @@ function App() {
 
   return (
     <div className="max-w-screen">
-      <NavBar cartValue={cartValue} handleLogout={handleLogout} user={user} />
-      <Routes>
-        <Route path="/" element={<MainPage user={user} setUser={setUser} />} />
-        <Route path="/login/" element={<Login setUser={setUser} user={user} />} />
-        <Route path="/signup/" element={<Signup setUser={setUser} user={user}/>} />
-        <Route path="/allproducts/" element={<AllProducts user={user}/>} />
-        <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
-        <Route path="/categorylist/" element={<CategoryList user={user}/>} />
-        <Route path="/category/:category" element={<CategoryProducts />} />
-        <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} user={user}/>} />
-        <Route path="/comingsoon/" element={<ComingSoon />} />
-        <Route path="/bodycare/" element={<BodyCare />} />
-        <Route path="/newarrivals/" element={<NewArrivals />} />
-      </Routes>
-      <Footer />
+      <UserContext.Provider value={{ user, setUser }}>
+        <NavBar cartValue={cartValue} handleLogout={handleLogout} user={user} />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login/" element={<Login  />} />
+          <Route path="/signup/" element={<Signup />} />
+          <Route path="/allproducts/" element={<AllProducts />} />
+          <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
+          <Route path="/categorylist/" element={<CategoryList />} />
+          <Route path="/category/:category" element={<CategoryProducts />} />
+          <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} />} />
+          <Route path="/comingsoon/" element={<ComingSoon />} />
+          <Route path="/bodycare/" element={<BodyCare />} />
+          <Route path="/newarrivals/" element={<NewArrivals />} />
+        </Routes>
+        <Footer />
+      </UserContext.Provider>
     </div>
   );
 }

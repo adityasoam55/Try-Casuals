@@ -1,14 +1,17 @@
 import { Form, Formik, useFormik } from "formik";
 import Input, { FormikInput } from "./Input";
-import React from "react";
+import React, { useContext } from "react";
 import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { signupUser } from "./api";
+import { UserContext } from "../App";
 
-function Signup({ setUser, user }) {
+function Signup() {
+
+    const { user, setUser } = useContext(UserContext);
 
     function callSignupAPI(values) {
-        console.log("calling login API", values.fullname , values.email, values.password)
+        console.log("calling login API", values.fullname, values.email, values.password)
         signupUser(values).then((resp) => {
             const { user, token } = resp.data;
             localStorage.setItem('userToken', token);

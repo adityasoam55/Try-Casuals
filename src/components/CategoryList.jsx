@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getProductCategoryList } from './api';
 import { Link, Navigate } from 'react-router-dom';
 import Loading from './Loading';
+import { UserContext } from '../App';
 
-function CategoryList({user}) {
+function CategoryList() {
+
+    const { user } = useContext(UserContext);
+
     const [categorylist, setCategorylist] = useState([]);
     const [loading, setLoading] = useState(true);
 

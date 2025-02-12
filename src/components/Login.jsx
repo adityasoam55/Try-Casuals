@@ -1,11 +1,14 @@
-import { Form, Formik, useFormik } from "formik";
+import React, { useContext } from "react";
+import { Form, Formik } from "formik";
 import { FormikInput } from "./Input";
-import React from "react";
 import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "./api";
+import { UserContext } from "../App";
 
-function Login({ setUser, user }) {
+function Login() {
+
+    const { user, setUser } = useContext(UserContext)
 
     function callLoginAPI(values) {
         loginUser(values).then((resp) => {

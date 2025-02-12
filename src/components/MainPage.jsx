@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AboutHebe from './AboutSection';
 import BottomItemPage from './BottomItemPage';
 import NoticePage from './NoticePage';
@@ -9,8 +9,11 @@ import AsideFirst from './AsideFirst';
 import MustHavePicks from './MustHavePicks';
 import MainImage from './MainImage';
 import { Navigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
-function MainPage({ user }) {
+function MainPage() {
+
+  const { user } = useContext(UserContext);
 
   if (!user) {
     return <Navigate to="/login" />

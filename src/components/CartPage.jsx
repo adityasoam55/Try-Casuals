@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CartList from './CartList';
 import { Navigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
-function CartPage({ cart, updateCart, user }) {
+function CartPage({ cart, updateCart }) {
+
+    const { user } = useContext(UserContext);
 
     if (!user) {
         return <Navigate to="/login/" />
