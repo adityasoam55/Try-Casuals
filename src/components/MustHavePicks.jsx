@@ -33,7 +33,7 @@ function MustHavePicks() {
                 {
                     itemList.map(function ({id, ...item}) {
                         return (
-                            <Link to={"/productdetails/" + id}>
+                            <Link to={"/productdetails/" + id} key={id}>
                                 <div key={item.id} className=' text-white bg-gray-400'>
                                     <div className='h-96 w-80'>
                                         <img className='w-full h-full object-cover' src={item.thumbnail} />

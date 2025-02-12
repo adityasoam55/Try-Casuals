@@ -2,12 +2,19 @@ import { Form, Formik, useFormik } from "formik";
 import Input, { FormikInput } from "./Input";
 import React from "react";
 import * as Yup from 'yup';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { signupUser } from "./api";
 
-function Login() {
+function Signup({ setUser, user }) {
 
-    function callLoginAPI({email, password}) {
-        console.log("calling login API", email, password)
+    function callSignupAPI(values) {
+        console.log("calling login API", values.fullname , values.email, values.password)
+        signupUser(values).then((resp) => {
+            const { user, token } = resp.data;
+            localStorage.setItem('userToken', token);
+            setUser(user);
+            // console.log(user)
+        })
     }
 
     const signupSchema = Yup.object().shape({
@@ -22,6 +29,10 @@ function Login() {
         password: ""
     }
 
+    if (user) {
+        return <Navigate to="/" />
+    }
+
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-8 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -32,7 +43,7 @@ function Login() {
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
                 <Formik
-                    onSubmit={callLoginAPI}
+                    onSubmit={callSignupAPI}
                     validationSchema={signupSchema}
                     initialValues={initialValues}
                 >
@@ -69,9 +80,9 @@ function Login() {
                 </Formik>
 
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
-                   Already have account - {''}
+                    Already have account - {''}
                     <Link to="/login/" className="font-semibold text-gray-900 hover:text-gray-700 hover:underline hover:underline-offset-4">
-                       SignIn 
+                        SignIn
                     </Link>
                 </p>
             </div>
@@ -79,4 +90,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Signup;

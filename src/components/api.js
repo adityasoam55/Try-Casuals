@@ -27,8 +27,16 @@ export function getProductByCategory(category) {
         });
 }
 
-export function loginUser(values){
-  return  axios.post("https://myeasykart.codeyogi.io/login", {
+export function loginUser(values) {
+    return axios.post("https://myeasykart.codeyogi.io/login", {
+        email: values.email,
+        password: values.password
+    })
+}
+
+export function signupUser(values) {
+    return axios.post("https://myeasykart.codeyogi.io/signup", {
+        fullName: values.fullname,
         email: values.email,
         password: values.password
     })
