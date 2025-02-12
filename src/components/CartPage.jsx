@@ -1,8 +1,12 @@
 import React from 'react'
 import CartList from './CartList';
+import { Navigate } from 'react-router-dom';
 
-function CartPage({ cart, updateCart }) {
+function CartPage({ cart, updateCart, user }) {
 
+    if (!user) {
+        return <Navigate to="/login/" />
+    }
 
     return (
         <div className='max-w-6xl mx-auto p-6'>

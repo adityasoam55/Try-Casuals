@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { getProductCategoryList } from './api';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Loading from './Loading';
 
-function CategoryList() {
+function CategoryList({user}) {
     const [categorylist, setCategorylist] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -15,6 +15,10 @@ function CategoryList() {
             setLoading(false);
         })
     }, [])
+
+    if (!user) {
+        return <Navigate to="/login/" />
+    }
 
     if (loading) {
         return <Loading />;

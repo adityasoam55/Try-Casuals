@@ -75,16 +75,16 @@ function App() {
 
   return (
     <div className="max-w-screen">
-      <NavBar cartValue={cartValue} setUser={setUser} handleLogout={handleLogout} />
+      <NavBar cartValue={cartValue} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<MainPage user={user} setUser={setUser} />} />
         <Route path="/login/" element={<Login setUser={setUser} user={user} />} />
         <Route path="/signup/" element={<Signup />} />
-        <Route path="/allproducts/" element={<AllProducts />} />
+        <Route path="/allproducts/" element={<AllProducts user={user}/>} />
         <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
-        <Route path="/categorylist/" element={<CategoryList />} />
+        <Route path="/categorylist/" element={<CategoryList user={user}/>} />
         <Route path="/category/:category" element={<CategoryProducts />} />
-        <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} />} />
+        <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} user={user}/>} />
         <Route path="/comingsoon/" element={<ComingSoon />} />
         <Route path="/bodycare/" element={<BodyCare />} />
         <Route path="/newarrivals/" element={<NewArrivals />} />

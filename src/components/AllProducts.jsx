@@ -3,8 +3,9 @@ import { getAllProducts } from './api';
 import Product from './Product';
 import Loading from './Loading';
 import Input from './Input';
+import { Navigate } from 'react-router-dom';
 
-function AllProducts() {
+function AllProducts({user}) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("")
@@ -45,7 +46,9 @@ function AllProducts() {
     }
   }, [sort])
 
-
+  if (!user) {
+    return <Navigate to="/login/" />
+}
 
   if (loading) {
     return <Loading />

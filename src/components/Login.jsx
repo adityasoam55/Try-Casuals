@@ -34,7 +34,9 @@ function Login({ setUser, user }) {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-8 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h2 className="mt-8 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-                    Sign in to your account
+                    Sign in to your account <br />
+                    <span className="text-sm">OR</span> <br />
+                    <span className="text-sm font-normal">{`Use these credentials to login {email: one@one.com, password: 12345678}`}</span>
                 </h2>
             </div>
 
