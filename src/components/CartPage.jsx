@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import CartList from './CartList';
 import { Navigate } from 'react-router-dom';
-import { UserContext } from '../App';
+import withUser from './withUser';
 
-function CartPage({ cart, updateCart }) {
-
-    const { user } = useContext(UserContext);
+function CartPage({ cart, updateCart, user }) {
 
     if (!user) {
         return <Navigate to="/login/" />
@@ -19,4 +17,4 @@ function CartPage({ cart, updateCart }) {
     )
 }
 
-export default CartPage
+export default withUser(CartPage);

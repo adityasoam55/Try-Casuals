@@ -4,11 +4,9 @@ import Product from './Product';
 import Loading from './Loading';
 import Input from './Input';
 import { Navigate } from 'react-router-dom';
-import { UserContext } from '../App';
+import withUser from './withUser';
 
-function AllProducts() {
-
-  const { user } = useContext(UserContext);
+function AllProducts({user}) {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -91,5 +89,5 @@ function AllProducts() {
   )
 }
 
-export default AllProducts;
+export default withUser(AllProducts);
 

@@ -1,14 +1,12 @@
-import { Form, Formik, useFormik } from "formik";
+import { Form, Formik } from "formik";
 import Input, { FormikInput } from "./Input";
-import React, { useContext } from "react";
+import React from "react";
 import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { signupUser } from "./api";
-import { UserContext } from "../App";
+import withUser from "./withUser";
 
-function Signup() {
-
-    const { user, setUser } = useContext(UserContext);
+function Signup({user, setUser}) {
 
     function callSignupAPI(values) {
         console.log("calling login API", values.fullname, values.email, values.password)
@@ -93,4 +91,4 @@ function Signup() {
     )
 }
 
-export default Signup;
+export default withUser(Signup);

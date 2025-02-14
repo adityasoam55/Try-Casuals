@@ -1,19 +1,18 @@
 import React, { useContext } from 'react';
 import AboutHebe from './AboutSection';
-import BottomItemPage from './BottomItemPage';
+// import BottomItemPage from './BottomItemPage';
 import NoticePage from './NoticePage';
 import MainVideo from './MainVideo';
 import BrandsLogo from './BrandsLogo';
 import AsideSecond from './AsideSecond';
 import AsideFirst from './AsideFirst';
 import MustHavePicks from './MustHavePicks';
+
 import MainImage from './MainImage';
 import { Navigate } from 'react-router-dom';
-import { UserContext } from '../App';
+import withUser from './withUser';
 
-function MainPage() {
-
-  const { user } = useContext(UserContext);
+function MainPage({user}) {
 
   if (!user) {
     return <Navigate to="/login" />
@@ -34,4 +33,4 @@ function MainPage() {
   )
 }
 
-export default MainPage;
+export default withUser(MainPage);

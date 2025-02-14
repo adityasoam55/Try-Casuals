@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Form, Formik } from "formik";
 import { FormikInput } from "./Input";
 import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "./api";
-import { UserContext } from "../App";
+import withUser from "./withUser";
 
-function Login() {
-
-    const { user, setUser } = useContext(UserContext)
+function Login({ user, setUser }) {
 
     function callLoginAPI(values) {
         loginUser(values).then((resp) => {
@@ -86,4 +84,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default withUser(Login);

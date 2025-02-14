@@ -2,11 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getProductCategoryList } from './api';
 import { Link, Navigate } from 'react-router-dom';
 import Loading from './Loading';
-import { UserContext } from '../App';
+import withUser from './withUser';
 
-function CategoryList() {
-
-    const { user } = useContext(UserContext);
+function CategoryList({ user }) {
 
     const [categorylist, setCategorylist] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,4 +46,4 @@ function CategoryList() {
     )
 }
 
-export default CategoryList;
+export default withUser(CategoryList);
