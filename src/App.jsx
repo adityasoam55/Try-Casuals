@@ -15,18 +15,26 @@ import BodyCare from './components/BodyCare';
 import NewArrivals from './components/NewArrivals';
 import axios from 'axios';
 import Loading from './components/Loading';
+import Alert from './components/Alert';
 
 
 export const UserContext = createContext();
+export const AlertContext = createContext();
+
 function App() {
 
   const navigate = useNavigate(); // Add navigate hook
   const savedString = localStorage.getItem('cart') || '{}';
   const savedCart = JSON.parse(savedString);
 
-  const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
   const [cart, setCart] = useState(savedCart);
+  const [user, setUser] = useState(null);
+  const [alert, setAlert] = useState();
+
+  const removeAlert = () => {
+    setAlert(undefined);
+  }
 
   useEffect(() => {
     const token = localStorage.getItem('userToken'); // Get token inside useEffect
@@ -79,21 +87,24 @@ function App() {
   return (
     <div className="max-w-screen">
       <UserContext.Provider value={{ user, setUser }}>
-        <NavBar cartValue={cartValue} handleLogout={handleLogout} user={user} />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/login/" element={<Login  />} />
-          <Route path="/signup/" element={<Signup />} />
-          <Route path="/allproducts/" element={<AllProducts />} />
-          <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
-          <Route path="/categorylist/" element={<CategoryList />} />
-          <Route path="/category/:category" element={<CategoryProducts />} />
-          <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} />} />
-          <Route path="/comingsoon/" element={<ComingSoon />} />
-          <Route path="/bodycare/" element={<BodyCare />} />
-          <Route path="/newarrivals/" element={<NewArrivals />} />
-        </Routes>
-        <Footer />
+        <AlertContext.Provider value={{ alert, setAlert, removeAlert }}>
+          <Alert />
+          <NavBar cartValue={cartValue} handleLogout={handleLogout} user={user} />
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/login/" element={<Login />} />
+            <Route path="/signup/" element={<Signup />} />
+            <Route path="/allproducts/" element={<AllProducts />} />
+            <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
+            <Route path="/categorylist/" element={<CategoryList />} />
+            <Route path="/category/:category" element={<CategoryProducts />} />
+            <Route path="/cartpage/" element={<CartPage cart={cart} updateCart={updateCart} />} />
+            <Route path="/comingsoon/" element={<ComingSoon />} />
+            <Route path="/bodycare/" element={<BodyCare />} />
+            <Route path="/newarrivals/" element={<NewArrivals />} />
+          </Routes>
+          <Footer />
+        </AlertContext.Provider>
       </UserContext.Provider>
     </div>
   );

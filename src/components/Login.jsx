@@ -5,15 +5,18 @@ import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "./api";
 import withUser from "./withUser";
+import withAlert from "./withAlert";
 
-function Login({ user, setUser }) {
+function Login({ user, setUser, setAlert }) {
 
     function callLoginAPI(values) {
         loginUser(values).then((resp) => {
             const { user, token } = resp.data;
             localStorage.setItem('userToken', token);
             setUser(user);
-            // console.log(user)
+            setAlert({ type: "success", message: "Logged in successfully" })
+        }).catch(() => {
+            setAlert({ type: "error", message: "Invalid email or password" })
         })
     }
 
@@ -84,4 +87,4 @@ function Login({ user, setUser }) {
     )
 }
 
-export default withUser(Login);
+export default withAlert(withUser(Login));
