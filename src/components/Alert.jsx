@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import withAlert from "./withAlert";
 
 
 const Alert = ({ alert, removeAlert }) => {
+
+    useEffect(function () {
+        if (alert) {
+            const timeOut = setTimeout(removeAlert, 3 * 1000);
+
+            return function () {
+                clearTimeout(timeOut)
+            }
+        }
+    }, [alert])
+
     if (!alert) {
         return;
     }
