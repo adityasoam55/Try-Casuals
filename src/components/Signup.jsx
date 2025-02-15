@@ -4,9 +4,9 @@ import React from "react";
 import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { signupUser } from "./api";
-import withUser from "./withUser";
+import { withUser } from "./withProvider";
 
-function Signup({user, setUser}) {
+function Signup({ user, setUser }) {
 
     function callSignupAPI(values) {
         console.log("calling login API", values.fullname, values.email, values.password)

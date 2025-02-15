@@ -10,9 +10,9 @@ import MustHavePicks from './MustHavePicks';
 
 import MainImage from './MainImage';
 import { Navigate } from 'react-router-dom';
-import withUser from './withUser';
+import { withUser } from './withProvider';
 
-function MainPage({user}) {
+function MainPage({ user }) {
 
   if (!user) {
     return <Navigate to="/login" />

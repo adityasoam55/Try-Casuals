@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import CartList from './CartList';
 import { Navigate } from 'react-router-dom';
-import withUser from './withUser';
+import { withUser } from './withProvider';
 
 function CartPage({ cart, updateCart, user }) {
 

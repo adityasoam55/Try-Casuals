@@ -4,8 +4,7 @@ import { FormikInput } from "./Input";
 import * as Yup from 'yup';
 import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "./api";
-import withUser from "./withUser";
-import withAlert from "./withAlert";
+import { withUser, withAlert } from "./withProvider";
 
 function Login({ user, setUser, setAlert }) {
 

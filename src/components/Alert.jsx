@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
-import withAlert from "./withAlert";
+import { withAlert } from "./withProvider";
 
 
 const Alert = ({ alert, removeAlert }) => {

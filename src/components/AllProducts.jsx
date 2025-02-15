@@ -4,9 +4,9 @@ import Product from './Product';
 import Loading from './Loading';
 import Input from './Input';
 import { Navigate } from 'react-router-dom';
-import withUser from './withUser';
+import { withUser } from './withProvider';
 
-function AllProducts({user}) {
+function AllProducts({ user }) {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);

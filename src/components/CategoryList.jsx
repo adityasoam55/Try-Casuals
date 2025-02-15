@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getProductCategoryList } from './api';
 import { Link, Navigate } from 'react-router-dom';
 import Loading from './Loading';
-import withUser from './withUser';
+import { withUser } from './withProvider';
 
 function CategoryList({ user }) {
 

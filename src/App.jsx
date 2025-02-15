@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'; // Import useNavigate
 import MainPage from './components/MainPage';
 import NavBar from './components/NavBar';
@@ -16,10 +16,8 @@ import NewArrivals from './components/NewArrivals';
 import axios from 'axios';
 import Loading from './components/Loading';
 import Alert from './components/Alert';
+import { AlertContext, UserContext } from './components/contexts';
 
-
-export const UserContext = createContext();
-export const AlertContext = createContext();
 
 function App() {
 
