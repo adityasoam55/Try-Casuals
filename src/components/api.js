@@ -11,6 +11,14 @@ export function getProductDetails(id) {
     return axios.get(`https://dummyjson.com/product/${id}`).then(resp => resp.data);
 }
 
+export function searchProduct({ query }) {
+    return axios.get(`https://dummyjson.com/products/search?q=${query}`).then(resp => resp.data.products);
+}
+
+export function sortProduct({ sortBy, order }) {
+    return axios.get(`https://dummyjson.com/products?sortBy=${sortBy}&order=${order}`).then(resp => resp.data.products);
+}
+
 export function getProductCategoryList() {
     return axios.get("https://dummyjson.com/products/categories").then(resp => resp.data);
 }
