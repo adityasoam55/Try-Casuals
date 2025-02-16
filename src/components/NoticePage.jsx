@@ -9,7 +9,7 @@ function NoticePage() {
                 <div className='h-96 relative'>
                     <img className='h-full w-full object-cover ' src="/images/newarrivals.jpg" />
                     <div className='flex justify-center items-center w-full h-full absolute top-0 z-10 text-white font-black text-3xl font-mono hover:underline underline-offset-8  hover:cursor-pointer'>
-                        <a className='opacity-100 relative' href="">New Arrivals</a>
+                        <p className='opacity-100 relative' >New Arrivals</p>
                     </div>
                 </div>
             </Link>
@@ -18,7 +18,7 @@ function NoticePage() {
                 <div className='h-96 relative'>
                     <img className='h-full w-full object-cover' src="/images/handbag.avif" />
                     <div className='flex justify-center items-center h-full w-full absolute top-0 z-10 text-white font-black text-3xl font-mono hover:underline underline-offset-8 hover:cursor-pointer'>
-                        <a className='' href="">Hand Bags</a>
+                        <p className='' >Hand Bags</p>
                     </div>
                 </div>
             </Link>
@@ -27,7 +27,7 @@ function NoticePage() {
                 <div className='h-96 relative'>
                     <img className='h-full w-full object-cover' src="/images/sale.avif" />
                     <div className='flex justify-center items-center h-full w-full absolute top-0 z-10 text-white font-black text-3xl font-mono hover:underline underline-offset-8 hover:cursor-pointer'>
-                        <a className='' href="">Body Care</a>
+                        <p className='' >Body Care</p>
                     </div>
                 </div>
             </Link>

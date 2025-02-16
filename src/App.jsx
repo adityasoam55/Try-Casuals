@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom'; // Import useNavigate
+import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom'; // Import useNavigate
 import MainPage from './components/MainPage';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -13,57 +13,16 @@ import CartPage from './components/CartPage';
 import ComingSoon from './components/ComingSoon';
 import BodyCare from './components/BodyCare';
 import NewArrivals from './components/NewArrivals';
-import axios from 'axios';
-import Loading from './components/Loading';
 import Alert from './components/Alert';
-import { AlertContext, UserContext } from './components/contexts';
+import UserProvider from './providers/UserProvider';
+import AlertProvider from './providers/AlertProvider';
 
 
 function App() {
-
-  const navigate = useNavigate(); // Add navigate hook
   const savedString = localStorage.getItem('cart') || '{}';
   const savedCart = JSON.parse(savedString);
 
-  const [loadingUser, setLoadingUser] = useState(true);
   const [cart, setCart] = useState(savedCart);
-  const [user, setUser] = useState(null);
-  const [alert, setAlert] = useState();
-
-  const removeAlert = () => {
-    setAlert(undefined);
-  }
-
-  useEffect(() => {
-    const token = localStorage.getItem('userToken'); // Get token inside useEffect
-
-    if (token) {
-      axios.get('https://myeasykart.codeyogi.io/me', {
-        headers: {
-          Authorization: token,
-        },
-      })
-        .then(resp => {
-          setUser(resp.data);
-          setLoadingUser(false);
-        })
-        .catch(() => {
-          localStorage.removeItem('userToken'); // If token is invalid, remove it
-          setUser(null);
-          setLoadingUser(false);
-          navigate('/login'); // Redirect to login if token is invalid
-        });
-    } else {
-      setUser(null);
-      setLoadingUser(false);
-    }
-  }, []); // Empty dependency to run once on mount
-
-  function handleLogout() {
-    localStorage.removeItem('userToken');
-    setUser(null);
-    navigate('/login'); // Redirect immediately
-  }
 
   function handleAddCart(count, productId) {
     let oldCount = cart[productId] || 0;
@@ -78,16 +37,13 @@ function App() {
 
   const cartValue = Object.values(cart).reduce((acc, curr) => acc + curr, 0);
 
-  if (loadingUser) {
-    return <Loading />;
-  }
 
   return (
     <div className="max-w-screen">
-      <UserContext.Provider value={{ user, setUser }}>
-        <AlertContext.Provider value={{ alert, setAlert, removeAlert }}>
+      <UserProvider>
+        <AlertProvider>
           <Alert />
-          <NavBar cartValue={cartValue} handleLogout={handleLogout} user={user} />
+          <NavBar cartValue={cartValue} />
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/login/" element={<Login />} />
@@ -102,8 +58,8 @@ function App() {
             <Route path="/newarrivals/" element={<NewArrivals />} />
           </Routes>
           <Footer />
-        </AlertContext.Provider>
-      </UserContext.Provider>
+        </AlertProvider>
+      </UserProvider>
     </div>
   );
 }

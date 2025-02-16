@@ -3,6 +3,7 @@ import { BsHandbag } from 'react-icons/bs';
 import { IoPersonOutline } from 'react-icons/io5';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { withUser } from './withProvider';
 
 function NavBar({ cartValue, handleLogout, user }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,7 +60,7 @@ function NavBar({ cartValue, handleLogout, user }) {
           <Link to="/cartpage/" aria-label="Shopping Bag">
             <div className="relative flex justify-center">
               <BsHandbag />
-              {user ? 
+              {user ?
                 <span className="absolute top-2.5 text-sm font-medium">{cartValue}</span> : <span className="absolute top-2.5 text-sm font-medium">0</span>
               }
             </div>
@@ -88,4 +89,4 @@ function NavBar({ cartValue, handleLogout, user }) {
   );
 }
 
-export default NavBar;
+export default withUser(NavBar);
