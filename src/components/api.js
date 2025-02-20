@@ -11,8 +11,8 @@ export function getProductDetails(id) {
     return axios.get(`https://dummyjson.com/product/${id}`).then(resp => resp.data);
 }
 
-export function searchProduct({ query }) {
-    return axios.get(`https://dummyjson.com/products/search?q=${query}`).then(resp => resp.data.products);
+export function searchProduct({ query, skip }) {
+    return axios.get(`https://dummyjson.com/products/search?q=${query}&skip=${skip}`).then(resp => resp.data);
 }
 
 export function sortProduct({ sortBy, order }) {

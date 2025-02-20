@@ -5,6 +5,7 @@ import Loading from './Loading';
 import Input from './Input';
 import { Navigate } from 'react-router-dom';
 import { withUser } from './withProvider';
+import { range } from 'lodash';
 
 function AllProducts({ user }) {
 
@@ -12,18 +13,22 @@ function AllProducts({ user }) {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("")
   const [sort, setSort] = useState("default");
+  const [skip, setSkip] = useState(0);
+  const [page, setPage] = useState(1)
 
 
   useEffect(function () {
-    let filterProducts = searchProduct({ query });
+    let filterProducts = searchProduct({ query, skip });
 
     filterProducts.then(function (resp) {
-      setProducts(resp);
+      // console.log(Math.ceil(resp.total/30));
+      setPage(Math.ceil(resp.total / 30));
+      setProducts(resp.products);
       setLoading(false);
     }).catch(function () {
       setLoading(false)
     })
-  }, [query])
+  }, [query, skip, page])
 
   useEffect(function () {
     let sortBy;
@@ -40,7 +45,7 @@ function AllProducts({ user }) {
       order = "desc";
     } else if (sort == "default") {
       sortBy = "default";
-      order="";
+      order = "";
     }
 
     let sortedProducts = sortProduct({ sortBy, order });
@@ -90,6 +95,15 @@ function AllProducts({ user }) {
         {products.map((product) => (
           <Product key={product.id} {...product} />
         ))}
+      </div>
+      <div className='flex justify-center pt-8'>
+        {
+          range(0, page).map((item) => (
+            <button key={item} className='border border-black mx-1 px-1'
+              onClick={() => setSkip(item * 30)}
+            >{item + 1}</button>
+          ))
+        }
       </div>
 
     </div>
