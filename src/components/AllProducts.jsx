@@ -3,7 +3,7 @@ import { searchProduct, sortProduct } from './api';
 import Product from './Product';
 import Loading from './Loading';
 import Input from './Input';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { withUser } from './withProvider';
 import { range } from 'lodash';
 
@@ -13,8 +13,12 @@ function AllProducts({ user }) {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("")
   const [sort, setSort] = useState("default");
-  const [skip, setSkip] = useState(0);
+  // const [skip, setSkip] = useState(0);
   const [page, setPage] = useState(1)
+
+  let [searchParams, setSearchParams] = useSearchParams();
+  let skip = +(searchParams.get("skip"))
+  // skip = skip || 0;
 
 
   useEffect(function () {
@@ -28,7 +32,7 @@ function AllProducts({ user }) {
     }).catch(function () {
       setLoading(false)
     })
-  }, [query, skip, page])
+  }, [query, page, skip])
 
   useEffect(function () {
     let sortBy;
@@ -99,9 +103,9 @@ function AllProducts({ user }) {
       <div className='flex justify-center pt-8'>
         {
           range(0, page).map((item) => (
-            <button key={item} className='border border-black mx-1 px-1'
-              onClick={() => setSkip(item * 30)}
-            >{item + 1}</button>
+            <Link to={"?skip=" + (item * 30)} key={item}
+              className='border border-black mx-1 px-1'
+            >{item + 1}</Link>
           ))
         }
       </div>
