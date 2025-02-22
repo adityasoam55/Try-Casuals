@@ -11,12 +11,8 @@ export function getProductDetails(id) {
     return axios.get(`https://dummyjson.com/product/${id}`).then(resp => resp.data);
 }
 
-export function searchProduct({ query, skip }) {
-    return axios.get(`https://dummyjson.com/products/search?q=${query}&skip=${skip}`).then(resp => resp.data);
-}
-
-export function sortProduct({ sortBy, order }) {
-    return axios.get(`https://dummyjson.com/products?sortBy=${sortBy}&order=${order}`).then(resp => resp.data.products);
+export function searchProduct({ q, skip, sortBy, order}) {
+    return axios.get(`https://dummyjson.com/products/search?q=${q}&skip=${skip}&sortBy=${sortBy}&order=${order}`).then(resp => resp.data);
 }
 
 export function getProductCategoryList() {

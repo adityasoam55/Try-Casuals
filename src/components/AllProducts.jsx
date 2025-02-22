@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { searchProduct, sortProduct } from './api';
+import { searchProduct } from './api';
 import Product from './Product';
 import Loading from './Loading';
 import Input from './Input';
@@ -11,28 +11,31 @@ function AllProducts({ user }) {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState("")
-  const [sort, setSort] = useState("default");
+  // const [query, setQuery] = useState("")
+  // const [sort, setSort] = useState("default");
   // const [skip, setSkip] = useState(0);
   const [page, setPage] = useState(1)
 
-  let [searchParams, setSearchParams] = useSearchParams();
-  let skip = +(searchParams.get("skip"))
-  // skip = skip || 0;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = Object.fromEntries([...searchParams]);
+  let { q, sort, skip } = params;
+
+  q = q || "";
+  sort = sort || "default";
+  skip = skip || 0;
 
 
-  useEffect(function () {
-    let filterProducts = searchProduct({ query, skip });
+  // useEffect(function () {
+  //   let filterProducts = searchProduct({ q, skip });
 
-    filterProducts.then(function (resp) {
-      // console.log(Math.ceil(resp.total/30));
-      setPage(Math.ceil(resp.total / 30));
-      setProducts(resp.products);
-      setLoading(false);
-    }).catch(function () {
-      setLoading(false)
-    })
-  }, [query, page, skip])
+  //   filterProducts.then(function (resp) {
+  //     setPage(Math.ceil(resp.total / 30));
+  //     setProducts(resp.products);
+  //     setLoading(false);
+  //   }).catch(function () {
+  //     setLoading(false)
+  //   })
+  // }, [q, page, skip])
 
   useEffect(function () {
     let sortBy;
@@ -52,15 +55,16 @@ function AllProducts({ user }) {
       order = "";
     }
 
-    let sortedProducts = sortProduct({ sortBy, order });
+    let productList = searchProduct({ q, skip, sortBy, order });
 
-    sortedProducts.then(function (resp) {
-      setProducts(resp);
+    productList.then(function (resp) {
+      setPage(Math.ceil(resp.total / 30));
+      setProducts(resp.products);
       setLoading(false);
     }).catch(function () {
       setLoading(false)
     })
-  }, [sort])
+  }, [q, skip, sort])
 
 
 
@@ -79,14 +83,19 @@ function AllProducts({ user }) {
         <Input
           type="text"
           placeholder="Search products..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value.toLowerCase())}
+          value={q}
+          onChange={(e) => {
+            setSearchParams(
+              { ...params, q: e.target.value.toLowerCase(), skip: 0 }, { replace: false });
+          }}
         />
 
         <select
           className="border border-gray-300 bg-gray-200 outline-none rounded-lg px-3 py-1.5"
           value={sort}
-          onChange={(e) => setSort(e.target.value)}
+          onChange={(e) => {
+            setSearchParams({ ...params, sort: e.target.value }, { replace: false });
+          }}
         >
           <option value="default">Default sort</option>
           <option value="highToLow">Price: High to Low</option>
@@ -101,13 +110,21 @@ function AllProducts({ user }) {
         ))}
       </div>
       <div className='flex justify-center pt-8'>
-        {
-          range(0, page).map((item) => (
-            <Link to={"?skip=" + (item * 30)} key={item}
-              className='border border-black mx-1 px-1'
-            >{item + 1}</Link>
-          ))
-        }
+        {range(0, page).map((pageNo) => (
+          <Link
+            key={pageNo}
+            to={"?" + new URLSearchParams({ ...params, skip: pageNo * 30 })}
+            className={
+              "px-2 border border-black mx-2 " +
+              (pageNo == page ? "bg-orange-400" : "bg-gray-400")
+            }
+            onClick={() => {
+              setSkip(pageNo * 30);
+            }}
+          >
+            {pageNo + 1}
+          </Link>
+        ))}
       </div>
 
     </div>
