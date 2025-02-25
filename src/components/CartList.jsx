@@ -119,7 +119,7 @@ function CartList({ cart, updateCart }) {
                 Total: ${total.toFixed(2)}
               </span>
               <button
-                className="bg-gray-400 hover:bg-gray-300 text-white px-2 py-1 font-medium rounded-md"
+                className="bg-gray-400 hover:bg-gray-300 text-black px-2 py-1 rounded-md"
                 onClick={() => updateCart(localCart)}
               >
                 Update Cart
@@ -165,7 +165,7 @@ function CartList({ cart, updateCart }) {
               <button
                 type="submit"
                 disabled={processing || total === 0}
-                className="w-full bg-gray-400 hover:bg-gray-300 text-white px-4 py-2 rounded-md disabled:bg-gray-400"
+                className="w-full bg-gray-400 hover:bg-gray-300 text-black px-4 py-2 rounded-md disabled:bg-gray-400"
               >
                 {processing ? 'Processing...' : `Pay $${total.toFixed(2)}`}
               </button>
