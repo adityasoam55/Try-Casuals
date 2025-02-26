@@ -11,10 +11,7 @@ function AllProducts({ user }) {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const [query, setQuery] = useState("")
-  // const [sort, setSort] = useState("default");
-  // const [skip, setSkip] = useState(0);
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(0)
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
@@ -24,18 +21,8 @@ function AllProducts({ user }) {
   sort = sort || "default";
   skip = skip || 0;
 
+  let pages = Math.ceil(skip / 30);
 
-  // useEffect(function () {
-  //   let filterProducts = searchProduct({ q, skip });
-
-  //   filterProducts.then(function (resp) {
-  //     setPage(Math.ceil(resp.total / 30));
-  //     setProducts(resp.products);
-  //     setLoading(false);
-  //   }).catch(function () {
-  //     setLoading(false)
-  //   })
-  // }, [q, page, skip])
 
   useEffect(function () {
     let sortBy;
@@ -64,7 +51,7 @@ function AllProducts({ user }) {
     }).catch(function () {
       setLoading(false)
     })
-  }, [q, skip, sort])
+  }, [q, skip, sort, ])
 
 
 
@@ -116,7 +103,7 @@ function AllProducts({ user }) {
             to={"?" + new URLSearchParams({ ...params, skip: pageNo * 30 })}
             className={
               "px-2 border border-black mx-2 " +
-              (pageNo == page ? "bg-orange-400" : "bg-gray-400")
+              (pageNo == pages ? "bg-gray-400" : "bg-gray-300")
             }
             onClick={() => {
               setSkip(pageNo * 30);
