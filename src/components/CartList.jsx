@@ -1,4 +1,3 @@
-// CartList.jsx
 import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
 import { getProductDetails } from './api';

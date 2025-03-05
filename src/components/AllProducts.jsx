@@ -21,8 +21,7 @@ function AllProducts({ user }) {
   sort = sort || "default";
   skip = skip || 0;
 
-  let pages = Math.ceil(skip / 30);
-
+  let pages = (skip / 30);
 
   useEffect(function () {
     let sortBy;
@@ -102,7 +101,7 @@ function AllProducts({ user }) {
             key={pageNo}
             to={"?" + new URLSearchParams({ ...params, skip: pageNo * 30 })}
             className={
-              "px-2 border border-black mx-2 " +
+              "px-2 border rounded-full border-black mx-2 " +
               (pageNo == pages ? "bg-gray-400" : "bg-gray-300")
             }
             onClick={() => {
