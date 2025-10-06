@@ -1,54 +1,69 @@
-import React from 'react';
-import { TfiEmail } from 'react-icons/tfi';
-import { GrFacebookOption } from 'react-icons/gr';
-import { RxInstagramLogo } from 'react-icons/rx';
+import React from "react";
+import { TfiEmail } from "react-icons/tfi";
+import { GrFacebookOption } from "react-icons/gr";
+import { RxInstagramLogo } from "react-icons/rx";
 
 function Footer() {
-    return (
-        <div className="box-border bg-gray-400 text-white text-sm w-full text-center flex flex-col items-center pt-10 pb-2 ">
-            <div className="flex items-center flex-col gap-4 px-8 max-md:w-full">
-                <span className="text-4xl font-mono font-black mb-1">Join us</span>
-                <span className='w-8/12 max-md:w-full pb-2 max-md:font-normal max-md:text-xs'>
-                    We will let you know when we have new arrivals, events and promo's don't
-                    worry we send them infrequently, just a friendly hi now and
-                    again!
-                </span>
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-12 text-center">
+      {/* Join Section */}
+      <div className="max-w-3xl mx-auto px-4 mb-10">
+        <h2 className="text-4xl font-bold font-mono text-white mb-4">
+          Join Us
+        </h2>
+        <p className="text-sm md:text-base leading-relaxed">
+          We’ll let you know when we have new arrivals, events, and promos — no
+          spam, just style.
+        </p>
 
-                <div className='w-7/12 flex justify-center mb-2'>
-                    <form action="" className='w-full'>
-                        <div className="relative flex items-center">
-                            <input
-                                className="text-lg bg-gray-400  placeholder:text-white outline-none border-b-2 w-full"
-                                type="text"
-                                placeholder="Enter your email"
-                            />
-                            <TfiEmail className="absolute right-0.5 text-lg" />
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-
-            <div className="py-5 flex flex-col gap-3 justify-center items-center max-md:px-8">
-                <div className="flex gap-3">
-                    <RxInstagramLogo className="w-12 h-12 border rounded-full p-2" />
-                    <GrFacebookOption className="w-12 h-12 border rounded-full p-2" />
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-2.5 max-md:font-normal max-md:text-xs">
-                    <a className='max-md:px-2.5 max-md:py-1.5' href="">Contact</a>
-                    <a className='max-md:px-2.5 max-md:py-1.5' href="">FAQ</a>
-                    <a className='max-md:px-2.5 max-md:py-1.5' href="">Shipping</a>
-                    <a className='max-md:px-2.5 max-md:py-1.5' href="">Returns</a>
-                    <a className='max-md:px-2.5 max-md:py-1.5' href="">Privacy Policy</a>
-                </div>
-
-                <div className='max-md:mt-2.5 max-md:font-normal max-md:text-xs'>
-                © 2023 TryCasuals
-                </div>
-            </div>
+        {/* Email Input */}
+        <div className="flex justify-center w-full max-w-md mx-auto mt-5">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="flex-grow px-4 py-2 rounded-l-full text-gray-800 focus:outline-none"
+          />
+          <button className="bg-white text-gray-800 px-4 py-2 rounded-r-full hover:bg-gray-200 transition">
+            <TfiEmail />
+          </button>
         </div>
-    );
+      </div>
+
+      <hr className="border-gray-700 w-10/12 mx-auto mb-8" />
+
+      {/* Footer Bottom Section */}
+      <div className="flex flex-col items-center gap-6">
+        {/* Social Links */}
+        <div className="flex gap-4">
+          <a
+            href="#"
+            className="p-3 border border-gray-500 rounded-full hover:bg-pink-500 hover:text-white transition transform hover:scale-110"
+          >
+            <RxInstagramLogo className="w-5 h-5" />
+          </a>
+          <a
+            href="#"
+            className="p-3 border border-gray-500 rounded-full hover:bg-blue-600 hover:text-white transition transform hover:scale-110"
+          >
+            <GrFacebookOption className="w-5 h-5" />
+          </a>
+        </div>
+
+        {/* Footer Links */}
+        <div className="flex flex-wrap justify-center gap-4 text-sm">
+          <a href="#">Contact</a>
+          <a href="#">FAQ</a>
+          <a href="#">Shipping</a>
+          <a href="#">Returns</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+
+        <p className="text-xs text-gray-500">
+          © 2023 TryCasuals. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;

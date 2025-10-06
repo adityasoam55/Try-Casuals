@@ -1,22 +1,52 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
 
 function AsideSecond() {
-    return (
-        <div className='box-border py-20 w-screen flex max-md:flex-wrap-reverse lg:flex-nowrap max-md:px-8 px-14'>
-            <div className='max-md:w-full w-2/4 flex flex-col justify-center items-center pl-5 pr-10'>
-                <span className='max-md:text-2xl text-5xl font-extrabold max-md:pt-7 mb-5'>Homegrown</span>
+  return (
+    <div className="bg-stone-100 text-gray-800 w-full py-24 max-md:py-16 px-10 md:px-20 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden">
+      {/* Left Text Section */}
+      <motion.div
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="w-full md:w-1/2 flex flex-col justify-center items-start text-left space-y-6"
+      >
+        <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight">
+          Homegrown
+        </h2>
 
-                <span className='text-center'>We love all of our beautiful brands here at TryCasuals but there is a special place in our heart for the New Zealand brands. We have made it easy for you to find a little about each of these amazing brands. Head over to our Homegrown page where we give you a little insight into what makes each of these brands so special.
-                </span>
+        <p className="text-lg text-gray-600 leading-relaxed max-w-md">
+          We love all of our beautiful brands here at{" "}
+          <span className="font-semibold text-black">TryCasuals</span> — but
+          there’s a special place in our heart for New Zealand labels. Discover
+          the story behind each of these amazing homegrown brands and see what
+          makes them so special.
+        </p>
 
-                <button className='bg-stone-700 text-white font-light px-6 py-2.5 mt-5 border-2 border-stone-700'>Find out more</button>
-            </div>
+        <button className="px-8 py-3 bg-black text-white text-sm font-semibold rounded-full hover:bg-stone-700 transition-all duration-300 shadow-md">
+          Find Out More
+        </button>
+      </motion.div>
 
-            <div className='max-md:w-full w-2/4'>
-            <img className='w-full h-full max-h-screen object-contain' src="/images/homegrown.jpeg" />
-            </div>
+      {/* Right Image Section */}
+      <motion.div
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="w-full md:w-1/2"
+      >
+        <div className="relative w-full h-[500px] max-md:h-[350px] overflow-hidden rounded-xl shadow-lg group">
+          <img
+            className="w-full h-full object-cover object-top md:object-center transform group-hover:scale-105 transition-transform duration-500"
+            src="/images/homegrown.jpeg"
+            alt="Homegrown Brands"
+          />
+          {/* Optional overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-70 group-hover:opacity-80 transition"></div>
         </div>
-    );
+      </motion.div>
+    </div>
+  );
 }
 
 export default AsideSecond;
