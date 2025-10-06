@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
-import { BsHandbag } from 'react-icons/bs';
-import { IoPersonOutline } from 'react-icons/io5';
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { withUser } from './withProvider';
+import React, { useState } from "react";
+import { BsHandbag } from "react-icons/bs";
+import { IoPersonOutline } from "react-icons/io5";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
-function NavBar({ cartValue, handleLogout, user }) {
+function NavBar({ cartValue }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Function to handle logout and close the menu
-  const handleLogoutClick = () => {
-    handleLogout(); // Call the logout function from props
-    setIsMobileMenuOpen(false); // Close the mobile menu
-  };
 
   return (
     <div className="box-border relative w-full">
       <span className="text-neutral-300 text-xs text-center font-thin p-2 flex flex-wrap justify-center max-md:px-5">
-        $6 EXPRESS COURIER. FREE SHIPPING FOR ORDERS $200+. GIFTED TryCasuals TOTE BAG
-        WITH PURCHASES $250+.
+        $6 EXPRESS COURIER. FREE SHIPPING FOR ORDERS $200+. GIFTED TryCasuals
+        TOTE BAG WITH PURCHASES $250+.
       </span>
 
       <div className="w-full bg-gray-400 text-white flex items-center justify-between py-7 px-4 relative">
@@ -41,15 +34,18 @@ function NavBar({ cartValue, handleLogout, user }) {
           <Link to="/" className="hover:underline underline-offset-8">
             HOME
           </Link>
-          <Link to="/allproducts/" className="hover:underline underline-offset-8">
+          <Link
+            to="/allproducts/"
+            className="hover:underline underline-offset-8"
+          >
             ALL PRODUCTS
           </Link>
-          <Link to="/categorylist/" className="hover:underline underline-offset-8">
+          <Link
+            to="/categorylist/"
+            className="hover:underline underline-offset-8"
+          >
             CATEGORIES
           </Link>
-          <button onClick={handleLogoutClick} className="hover:underline underline-offset-8">
-            LOGOUT
-          </button>
         </div>
 
         {/* User & Cart Icons */}
@@ -60,9 +56,9 @@ function NavBar({ cartValue, handleLogout, user }) {
           <Link to="/cartpage/" aria-label="Shopping Bag">
             <div className="relative flex justify-center">
               <BsHandbag />
-              {user ?
-                <span className="absolute top-2.5 text-sm font-medium">{cartValue}</span> : <span className="absolute top-2.5 text-sm font-medium">0</span>
-              }
+              <span className="absolute top-2.5 text-sm font-medium">
+                {cartValue || 0}
+              </span>
             </div>
           </Link>
         </div>
@@ -71,22 +67,31 @@ function NavBar({ cartValue, handleLogout, user }) {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-gray-400 bg-opacity-60 text-white z-50 w-full flex flex-col items-start py-4 px-4 gap-4 shadow-lg">
-          <Link to="/" className="hover:underline underline-offset-8 text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/"
+            className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Home
           </Link>
-          <Link to="/allproducts/" className="hover:underline underline-offset-8 text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/allproducts/"
+            className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             ALL PRODUCTS
           </Link>
-          <Link to="/categorylist/" className="hover:underline underline-offset-8 text-lg" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            to="/categorylist/"
+            className="hover:underline underline-offset-8 text-lg"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             CATEGORIES
           </Link>
-          <button className="hover:underline underline-offset-8 text-lg" onClick={handleLogoutClick}>
-            LOGOUT
-          </button>
         </div>
       )}
     </div>
   );
 }
 
-export default withUser(NavBar);
+export default NavBar;

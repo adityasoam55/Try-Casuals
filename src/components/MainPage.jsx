@@ -1,25 +1,17 @@
-import React, { useContext } from 'react';
-import AboutHebe from './AboutSection';
+import React, { useContext } from "react";
+import AboutHebe from "./AboutSection";
 // import BottomItemPage from './BottomItemPage';
-import NoticePage from './NoticePage';
-import MainVideo from './MainVideo';
-import BrandsLogo from './BrandsLogo';
-import AsideSecond from './AsideSecond';
-import AsideFirst from './AsideFirst';
-import MustHavePicks from './MustHavePicks';
-
-import MainImage from './MainImage';
-import { Navigate } from 'react-router-dom';
-import { withUser } from './withProvider';
+import NoticePage from "./NoticePage";
+import MainVideo from "./MainVideo";
+import BrandsLogo from "./BrandsLogo";
+import AsideSecond from "./AsideSecond";
+import AsideFirst from "./AsideFirst";
+import MustHavePicks from "./MustHavePicks";
+import MainImage from "./MainImage";
 
 function MainPage({ user }) {
-
-  if (!user) {
-    return <Navigate to="/login" />
-  }
-
   return (
-    <div className='flex flex-col box-border overflow-x-hidden min-h-screen'>
+    <div className="flex flex-col box-border overflow-x-hidden min-h-screen">
       <MainImage />
       <AboutHebe />
       <MustHavePicks />
@@ -30,7 +22,7 @@ function MainPage({ user }) {
       <NoticePage />
       {/* <BottomItemPage /> */}
     </div>
-  )
+  );
 }
 
-export default withUser(MainPage);
+export default MainPage;

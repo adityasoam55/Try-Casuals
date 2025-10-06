@@ -1,14 +1,7 @@
-// CartPage.jsx (unchanged)
-import React, { useContext } from 'react';
-import CartList from './CartList';
-import { Navigate } from 'react-router-dom';
-import { withUser } from './withProvider';
+import React from "react";
+import CartList from "./CartList";
 
-function CartPage({ cart, updateCart, user }) {
-  if (!user) {
-    return <Navigate to="/login/" />;
-  }
-
+function CartPage({ cart, updateCart }) {
   return (
     <div className="max-w-6xl mx-auto p-6">
       <p className="text-center mb-4 text-2xl font-medium">My Cart</p>
@@ -17,4 +10,4 @@ function CartPage({ cart, updateCart, user }) {
   );
 }
 
-export default withUser(CartPage);
+export default CartPage;

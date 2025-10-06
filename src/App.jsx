@@ -6,8 +6,8 @@ import Footer from './components/Footer';
 import AllProducts from './components/AllProducts';
 import CategoryList from './components/CategoryList';
 import CategoryProducts from './components/CategoryProducts';
-import Login from './components/Login';
-import Signup from './components/Signup';
+// import Login from './components/Login';
+// import Signup from './components/Signup';
 import ProductDetails from './components/ProductDetails';
 import CartPage from './components/CartPage';
 import ComingSoon from './components/ComingSoon';
@@ -46,8 +46,8 @@ function App() {
           <NavBar cartValue={cartValue} />
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/login/" element={<Login />} />
-            <Route path="/signup/" element={<Signup />} />
+            {/* <Route path="/login/" element={<Login />} />
+            <Route path="/signup/" element={<Signup />} /> */}
             <Route path="/allproducts/" element={<AllProducts />} />
             <Route path="/productdetails/:id" element={<ProductDetails handleAddCart={handleAddCart} />} />
             <Route path="/categorylist/" element={<CategoryList />} />
