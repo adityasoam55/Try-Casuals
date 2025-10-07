@@ -1,32 +1,41 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function Product({ thumbnail, title, price, category, rating, id }) {
   return (
-    <Link to={"/productdetails/" + id}>
-      <div className="group relative">
-        <img
-          alt={title}
-          src={thumbnail}
-          className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-        />
+    <Link to={`/productdetails/${id}`}>
+      <div className="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden cursor-pointer">
+        {/* Product Image */}
+        <div className="relative w-full aspect-square overflow-hidden">
+          <img
+            src={thumbnail}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
 
-        <div className="mt-4 flex justify-between">
-          <div>
-            <h3 className="text-sm text-gray-700">
-              <p className='text-gray-900'>{title}
-              </p>
-            </h3>
-            <p className="mt-1 text-sm text-gray-500">{category}</p>
+          {/* Subtle overlay on hover */}
+          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+
+        {/* Product Info */}
+        <div className="p-4 flex flex-col items-center text-center">
+          <h3 className="text-gray-900 text-base font-semibold truncate w-full">
+            {title}
+          </h3>
+          <p className="text-gray-500 text-sm mt-1 capitalize">{category}</p>
+
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <span className="text-gray-800 font-bold">${price}</span>
+            <span className="text-xs text-gray-500">({rating}/5)</span>
           </div>
-          <div className='text-right text-sm'>
-            <p className="font-medium text-gray-900">${price}</p>
-            <p className="mt-1 text-gray-500">Ratings - {rating}/5</p>
-          </div>
+
+          <button className="mt-4 bg-gray-900 text-white px-5 py-1.5 rounded-md text-sm font-medium hover:bg-gray-700 transition-colors duration-200">
+            View Details
+          </button>
         </div>
       </div>
     </Link>
-  )
+  );
 }
 
 export default Product;

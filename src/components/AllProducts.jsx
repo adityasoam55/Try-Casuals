@@ -9,7 +9,7 @@ import { range } from "lodash";
 function AllProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = Object.fromEntries([...searchParams]);
@@ -19,41 +19,39 @@ function AllProducts() {
   sort = sort || "default";
   skip = skip || 0;
 
-  let pages = skip / 30;
+  useEffect(() => {
+    // 🆕 Scroll to top whenever skip, q, or sort changes
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
-  useEffect(
-    function () {
-      let sortBy;
-      let order;
+    let sortBy;
+    let order;
 
-      if (sort == "title") {
-        sortBy = "title";
-        order = "asc";
-      } else if (sort == "lowToHigh") {
-        sortBy = "price";
-        order = "asc";
-      } else if (sort == "highToLow") {
-        sortBy = "price";
-        order = "desc";
-      } else if (sort == "default") {
-        sortBy = "default";
-        order = "";
-      }
+    if (sort === "title") {
+      sortBy = "title";
+      order = "asc";
+    } else if (sort === "lowToHigh") {
+      sortBy = "price";
+      order = "asc";
+    } else if (sort === "highToLow") {
+      sortBy = "price";
+      order = "desc";
+    } else {
+      sortBy = "default";
+      order = "";
+    }
 
-      let productList = searchProduct({ q, skip, sortBy, order });
+    let productList = searchProduct({ q, skip, sortBy, order });
 
-      productList
-        .then(function (resp) {
-          setPage(Math.ceil(resp.total / 30));
-          setProducts(resp.products);
-          setLoading(false);
-        })
-        .catch(function () {
-          setLoading(false);
-        });
-    },
-    [q, skip, sort]
-  );
+    productList
+      .then(function (resp) {
+        setPageCount(Math.ceil(resp.total / 30));
+        setProducts(resp.products);
+        setLoading(false);
+      })
+      .catch(function () {
+        setLoading(false);
+      });
+  }, [q, skip, sort]); // dependencies remain same
 
   if (loading) {
     return <Loading />;
@@ -75,7 +73,6 @@ function AllProducts() {
         />
 
         <select
-          className="border border-gray-300 bg-gray-200 outline-none rounded-lg px-3 py-1.5"
           value={sort}
           onChange={(e) => {
             setSearchParams(
@@ -83,36 +80,54 @@ function AllProducts() {
               { replace: false }
             );
           }}
+          className="block border border-gray-300 bg-white text-gray-900 rounded-md px-3 py-2 
+             text-base sm:text-sm shadow-sm outline-none focus:ring-2 focus:ring-gray-600 
+             focus:border-transparent cursor-pointer"
         >
-          <option value="default">Default sort</option>
-          <option value="highToLow">Price: High to Low</option>
-          <option value="lowToHigh">Price: Low to High</option>
-          <option value="title">Sort by Name</option>
+          <option value="default" className="py-2">
+            Default sort
+          </option>
+          <option value="highToLow" className="py-2">
+            Price: High to Low
+          </option>
+          <option value="lowToHigh" className="py-2">
+            Price: Low to High
+          </option>
+          <option value="title" className="py-2">
+            Sort by Name
+          </option>
         </select>
       </div>
 
-      <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {products.map((product) => (
-          <Product key={product.id} {...product} />
-        ))}
-      </div>
-      <div className="flex justify-center pt-8">
-        {range(0, page).map((pageNo) => (
-          <Link
-            key={pageNo}
-            to={"?" + new URLSearchParams({ ...params, skip: pageNo * 30 })}
-            className={
-              "px-2 border rounded-full border-black mx-2 " +
-              (pageNo == pages ? "bg-gray-400" : "bg-gray-300")
-            }
-            onClick={() => {
-              setSkip(pageNo * 30);
-            }}
-          >
-            {pageNo + 1}
-          </Link>
-        ))}
-      </div>
+      {products.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.map((product) => (
+            <Product key={product.id} {...product} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-center text-gray-500 mt-10">
+          No products found for “{q}”
+        </p>
+      )}
+
+      {pageCount > 1 && (
+        <div className="flex justify-center items-center gap-3 mt-10">
+          {range(0, pageCount).map((pageNo) => (
+            <Link
+              key={pageNo}
+              to={"?" + new URLSearchParams({ ...params, skip: pageNo * 30 })}
+              className={`px-4 py-1.5 rounded-full border text-sm font-medium transition-colors duration-200 ${
+                pageNo === skip / 30
+                  ? "bg-gray-800 text-white border-gray-800"
+                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+              }`}
+            >
+              {pageNo + 1}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

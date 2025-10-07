@@ -11,7 +11,6 @@ import CartPage from "./components/CartPage";
 import ComingSoon from "./components/ComingSoon";
 import BodyCare from "./components/BodyCare";
 import NewArrivals from "./components/NewArrivals";
-import Alert from "./components/Alert";
 
 function App() {
   const savedString = localStorage.getItem("cart") || "{}";
